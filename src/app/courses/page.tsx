@@ -1,0 +1,176 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import StudentCourseCard from "@/components/student/StudentCourseCard";
+import { createClient } from "@/lib/supabase/server";
+import type { Course } from "@/types/course";
+
+const goalCopy = {
+  primary: {
+    title: "อาชีพหลัก",
+    description:
+      "คอร์สสำหรับคนที่อยากวางอาชีพเกษตรเป็นรายได้หลัก",
+  },
+  secondary: {
+    title: "อาชีพรอง",
+    description:
+      "คอร์สสำหรับเริ่มทำอาชีพเสริมจากพื้นที่และเวลาที่มี",
+  },
+  income: {
+    title: "รายได้ที่คาดหวัง",
+    description:
+      "สำรวจคอร์สที่ช่วยต่อยอดแผนรายได้ในอนาคต",
+  },
+  all: {
+    title: "อาชีพทั้งหมด",
+    description:
+      "รวมคอร์สอาชีพเกษตรที่เปิดให้เรียนใน RED TOH",
+  },
+};
+
+function getSearchValue(
+  value: string | string[] | undefined
+) {
+  if (Array.isArray(value)) {
+    return value[0] ?? "";
+  }
+
+  return value ?? "";
+}
+
+export default async function CoursesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    goal?: string | string[];
+    search?: string | string[];
+  }>;
+}) {
+  const params = await searchParams;
+  const goal = getSearchValue(params.goal);
+  const search = getSearchValue(params.search).trim();
+  const activeGoal =
+    goal === "primary" ||
+    goal === "secondary" ||
+    goal === "income"
+      ? goal
+      : "all";
+
+  const supabase = await createClient();
+
+  const { data: courses } = await supabase
+    .from("courses")
+    .select(
+      "id,user_id,title,description,image_url,status,created_at,updated_at"
+    )
+    .eq("status", "published")
+    .order("created_at", {
+      ascending: false,
+    })
+    .returns<Course[]>();
+
+  const filteredCourses = (courses ?? []).filter(
+    (course) => {
+      if (!search) {
+        return true;
+      }
+
+      const normalizedSearch = search.toLowerCase();
+
+      return (
+        course.title
+          .toLowerCase()
+          .includes(normalizedSearch) ||
+        course.description
+          .toLowerCase()
+          .includes(normalizedSearch)
+      );
+    }
+  );
+
+  const copy = goalCopy[activeGoal];
+
+  return (
+    <main className="min-h-screen bg-[#F8FAF7]">
+      <header className="border-b border-green-100 bg-white">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+          >
+            <Image
+              src="/logo.png"
+              width={48}
+              height={48}
+              alt="RED TOH Logo"
+            />
+            <span className="text-2xl font-bold text-[#14532D]">
+              RED TOH
+            </span>
+          </Link>
+
+          <Link
+            href="/login"
+            className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white"
+          >
+            เข้าสู่ระบบ
+          </Link>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="text-sm font-semibold text-[#14532D] hover:underline"
+          >
+            กลับหน้าแรก
+          </Link>
+
+          <h1 className="mt-4 text-3xl font-bold text-[#14532D] md:text-4xl">
+            {copy.title}
+          </h1>
+
+          <p className="mt-3 max-w-2xl leading-7 text-gray-600">
+            {copy.description}
+          </p>
+        </div>
+
+        <form
+          action="/courses"
+          className="mb-8 flex flex-col gap-3 rounded-3xl border border-green-100 bg-white p-4 shadow-sm sm:flex-row"
+        >
+          <input
+            name="search"
+            defaultValue={search}
+            placeholder="ค้นหาอาชีพหรือคอร์ส"
+            className="min-h-12 flex-1 rounded-2xl border border-green-200 px-4 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+          />
+          <input
+            type="hidden"
+            name="goal"
+            value={activeGoal}
+          />
+          <button className="rounded-2xl bg-[#14532D] px-6 py-3 font-semibold text-white">
+            ค้นหา
+          </button>
+        </form>
+
+        {filteredCourses.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-green-200 bg-white p-10 text-center text-gray-600">
+            ไม่พบอาชีพหรือคอร์สที่ตรงกับการค้นหา
+          </div>
+        ) : (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {filteredCourses.map((course) => (
+              <StudentCourseCard
+                key={course.id}
+                course={course}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
