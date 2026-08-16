@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search, UserCircle } from "lucide-react";
 
+import LogoutButton from "@/components/student/LogoutButton";
 import PopularCareerCarousel from "@/components/student/PopularCareerCarousel";
 import type { PopularCareerSlide } from "@/components/student/PopularCareerCarousel";
 import StudentCourseCard from "@/components/student/StudentCourseCard";
@@ -23,6 +24,22 @@ const goalCards = [
     href: "/courses?goal=income",
   },
 ];
+
+function getDashboardHref(role: string | null) {
+  if (role === "admin") {
+    return "/admin/dashboard";
+  }
+
+  if (role === "farmer") {
+    return "/farmer/dashboard";
+  }
+
+  if (role === "farmer_pending") {
+    return "/farmer/pending";
+  }
+
+  return "/student/dashboard";
+}
 
 function toSlides(
   featuredCareers: FeaturedCareer[],
@@ -65,6 +82,23 @@ function toSlides(
 
 export default async function Home() {
   const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: profile } = user
+    ? await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .maybeSingle<{ role: string }>()
+    : { data: null };
+
+  const dashboardHref = getDashboardHref(
+    profile?.role ?? null
+  );
+  const isStudent = profile?.role === "student";
 
   const { data: courses } = await supabase
     .from("courses")
@@ -125,27 +159,58 @@ export default async function Home() {
           </form>
 
           <div className="ml-auto flex shrink-0 items-center gap-2">
-            <Link
-              href="/register"
-              className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#166534]"
-            >
-              สมัครสมาชิก
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href="/"
+                  className="hidden rounded-xl px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                >
+                  หน้าแรก
+                </Link>
 
-            <Link
-              href="/student/dashboard"
-              className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
-            >
-              คอร์สของฉัน
-            </Link>
+                <Link
+                  href={dashboardHref}
+                  className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#166534]"
+                >
+                  หน้าผู้เรียน
+                </Link>
 
-            <Link
-              href="/student/dashboard"
-              aria-label="เข้าสู่ระบบ"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-green-100 text-[#14532D]"
-            >
-              <UserCircle size={28} />
-            </Link>
+                {isStudent && (
+                  <Link
+                    href="/student/courses"
+                    className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                  >
+                    คอร์สของฉัน
+                  </Link>
+                )}
+
+                <LogoutButton />
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/register"
+                  className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#166534]"
+                >
+                  สมัครสมาชิก
+                </Link>
+
+                <Link
+                  href="/student/dashboard"
+                  className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                >
+                  คอร์สของฉัน
+                </Link>
+
+                <Link
+                  href="/student/dashboard"
+                  aria-label="เข้าสู่ระบบ"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-green-100 text-[#14532D]"
+                >
+                  <UserCircle size={28} />
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>

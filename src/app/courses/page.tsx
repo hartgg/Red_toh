@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import LogoutButton from "@/components/student/LogoutButton";
 import StudentCourseCard from "@/components/student/StudentCourseCard";
 import { createClient } from "@/lib/supabase/server";
 import type { Course } from "@/types/course";
@@ -38,6 +39,22 @@ function getSearchValue(
   return value ?? "";
 }
 
+function getDashboardHref(role: string | null) {
+  if (role === "admin") {
+    return "/admin/dashboard";
+  }
+
+  if (role === "farmer") {
+    return "/farmer/dashboard";
+  }
+
+  if (role === "farmer_pending") {
+    return "/farmer/pending";
+  }
+
+  return "/student/dashboard";
+}
+
 export default async function CoursesPage({
   searchParams,
 }: {
@@ -57,6 +74,23 @@ export default async function CoursesPage({
       : "all";
 
   const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: profile } = user
+    ? await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .maybeSingle<{ role: string }>()
+    : { data: null };
+
+  const dashboardHref = getDashboardHref(
+    profile?.role ?? null
+  );
+  const isStudent = profile?.role === "student";
 
   const { data: courses } = await supabase
     .from("courses")
@@ -109,12 +143,52 @@ export default async function CoursesPage({
             </span>
           </Link>
 
-          <Link
-            href="/login"
-            className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white"
-          >
-            เข้าสู่ระบบ
-          </Link>
+          <nav className="flex items-center gap-2 text-sm font-semibold">
+            <Link
+              href="/"
+              className="rounded-xl px-3 py-2 text-[#14532D] hover:bg-green-50"
+            >
+              หน้าแรก
+            </Link>
+
+            {user ? (
+              <>
+                <Link
+                  href={dashboardHref}
+                  className="rounded-xl px-3 py-2 text-[#14532D] hover:bg-green-50"
+                >
+                  หน้าผู้เรียน
+                </Link>
+
+                {isStudent && (
+                  <Link
+                    href="/student/courses"
+                    className="hidden rounded-xl bg-[#14532D] px-4 py-2 text-white hover:bg-[#166534] sm:inline-flex"
+                  >
+                    คอร์สของฉัน
+                  </Link>
+                )}
+
+                <LogoutButton />
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/register"
+                  className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-[#14532D] hover:bg-green-50 sm:inline-flex"
+                >
+                  สมัครสมาชิก
+                </Link>
+
+                <Link
+                  href="/login"
+                  className="rounded-xl bg-[#14532D] px-4 py-2 text-white"
+                >
+                  เข้าสู่ระบบ
+                </Link>
+              </>
+            )}
+          </nav>
         </div>
       </header>
 
