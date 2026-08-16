@@ -1,5 +1,6 @@
 import AdminFeaturedCareersForm from "@/components/admin/AdminFeaturedCareersForm";
 import PendingFarmersApproval from "@/components/admin/PendingFarmersApproval";
+import LogoutButton from "@/components/student/LogoutButton";
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { requireAdmin } from "@/lib/auth";
@@ -74,6 +75,7 @@ export default async function AdminDashboard() {
       <SectionTitle
         title="Admin Dashboard"
         subtitle={`ยินดีต้อนรับ ${profile.full_name ?? profile.email}`}
+        action={<LogoutButton />}
       />
 
       <PendingFarmersApproval
