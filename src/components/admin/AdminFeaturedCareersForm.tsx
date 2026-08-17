@@ -221,6 +221,11 @@ export default function AdminFeaturedCareersForm({
           <p className="mt-2 text-gray-600">
             เลือกคอร์สและรูปภาพสำหรับสไลด์ 3 รูปด้านบนของหน้าผู้เรียน
           </p>
+
+          <p className="mt-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+            ขนาดรูปแนะนำ: 1920 × 480 px
+            หรือสัดส่วน 4:1 เช่น 1600 × 400 px / 1200 × 300 px
+          </p>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-3">
@@ -263,6 +268,10 @@ export default function AdminFeaturedCareersForm({
               <label className="mt-4 block text-sm font-medium text-[#14532D]">
                 รูปภาพสไลด์
               </label>
+
+              <p className="mt-1 text-xs text-gray-500">
+                ใช้รูปแนวนอนแบบป้ายยาว ขนาดแนะนำ 1920 × 480 px
+              </p>
 
               <input
                 type="file"
