@@ -39,18 +39,18 @@ export default function CoursePreview({
 
   return (
     <Card className="overflow-hidden p-0">
-      <div className="border-b border-green-100 bg-green-50 px-6 py-4">
-        <p className="text-sm font-medium text-[#14532D]">
+      <div className="border-b border-[#2E7D32]/15 bg-[#2E7D32]/10 px-6 py-4">
+        <p className="text-sm font-medium text-[#171B18]">
           ตัวอย่างคอร์ส
         </p>
 
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-[#282B28]/60">
           ตัวอย่างที่ผู้เรียนจะเห็น
         </p>
       </div>
 
       <div>
-        <div className="relative h-64 w-full overflow-hidden bg-gray-100">
+        <div className="relative h-64 w-full overflow-hidden bg-[#EEE8DD]">
           {imagePreview ? (
             <Image
               src={imagePreview}
@@ -60,7 +60,7 @@ export default function CoursePreview({
               className="object-cover"
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-gray-400">
+            <div className="flex h-full items-center justify-center text-[#282B28]/45">
               ยังไม่มีรูปปกคอร์ส
             </div>
           )}
@@ -75,8 +75,8 @@ export default function CoursePreview({
                 font-semibold
                 ${
                   status === "published"
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-600 text-white"
+                    ? "bg-[#C63228] text-white"
+                    : "bg-[#282B28]/70 text-white"
                 }
               `}
             >
@@ -87,22 +87,22 @@ export default function CoursePreview({
 
         <div className="space-y-6 p-6">
           <div>
-            <h2 className="text-2xl font-bold text-[#14532D]">
+            <h2 className="text-2xl font-bold text-[#171B18]">
               {title || "ชื่อคอร์สของคุณ"}
             </h2>
 
-            <p className="mt-3 whitespace-pre-line leading-7 text-gray-600">
+            <p className="mt-3 whitespace-pre-line leading-7 text-[#282B28]/75">
               {content || "รายละเอียดคอร์สจะแสดงตรงนี้"}
             </p>
           </div>
 
           <div>
-            <h3 className="mb-3 text-lg font-bold text-[#14532D]">
+            <h3 className="mb-3 text-lg font-bold text-[#171B18]">
               บทเรียนในคอร์ส
             </h3>
 
             {lessons.length === 0 ? (
-              <p className="rounded-2xl border border-dashed border-green-200 bg-green-50 p-4 text-sm text-gray-500">
+              <p className="rounded-2xl border border-dashed border-[#2E7D32]/25 bg-[#2E7D32]/10 p-4 text-sm text-[#282B28]/60">
                 ยังไม่มีบทเรียน
               </p>
             ) : (
@@ -110,24 +110,24 @@ export default function CoursePreview({
                 {lessons.map((lesson, index) => (
                   <div
                     key={lesson.id}
-                    className="rounded-2xl border border-green-100 bg-green-50/60 p-4"
+                    className="rounded-2xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-4"
                   >
-                    <p className="text-sm font-semibold text-[#14532D]">
+                    <p className="text-sm font-semibold text-[#171B18]">
                       บทเรียนที่ {index + 1}
                     </p>
 
-                    <p className="mt-1 font-medium text-gray-800">
+                    <p className="mt-1 font-medium text-[#282B28]">
                       {lesson.title.trim() || "ยังไม่ได้ตั้งชื่อบทเรียน"}
                     </p>
 
                     {lesson.description.trim() && (
-                      <p className="mt-2 whitespace-pre-line text-sm leading-6 text-gray-600">
+                      <p className="mt-2 whitespace-pre-line text-sm leading-6 text-[#282B28]/75">
                         {lesson.description}
                       </p>
                     )}
 
                     {lesson.youtube_url.trim() && (
-                      <p className="mt-2 text-sm text-green-700">
+                      <p className="mt-2 text-sm text-[#2E7D32]">
                         มีวิดีโอ YouTube ในบทนี้
                       </p>
                     )}

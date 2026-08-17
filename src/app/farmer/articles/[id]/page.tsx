@@ -95,7 +95,7 @@ export default async function ArticleDetailPage({
               className="object-cover"
             />
           ) : (
-            <div className="flex h-full items-center justify-center bg-green-50 text-gray-400">
+            <div className="flex h-full items-center justify-center bg-[#2E7D32]/10 text-[#282B28]/45">
               ไม่มีรูปภาพคอร์ส
             </div>
           )}
@@ -108,7 +108,7 @@ export default async function ArticleDetailPage({
                 Beginner
               </span>
 
-              <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#14532D]">
+              <span className="rounded-full bg-[#FFFDF7]/90 px-4 py-2 text-sm font-semibold text-[#171B18]">
                 {getStatusLabel(course.status)}
               </span>
             </div>
@@ -146,13 +146,13 @@ export default async function ArticleDetailPage({
       )}
 
       <Card className="mt-8">
-        <h2 className="text-2xl font-bold text-[#14532D]">
+        <h2 className="text-2xl font-bold text-[#171B18]">
           ผู้สอน
         </h2>
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#282B28]/60">
               ชื่อเกษตรกร
             </p>
 
@@ -165,7 +165,7 @@ export default async function ArticleDetailPage({
           </div>
 
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#282B28]/60">
               จังหวัด
             </p>
 
@@ -175,7 +175,7 @@ export default async function ArticleDetailPage({
           </div>
 
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#282B28]/60">
               อาชีพเกษตร
             </p>
 
@@ -185,7 +185,7 @@ export default async function ArticleDetailPage({
           </div>
 
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#282B28]/60">
               พื้นที่ฟาร์ม
             </p>
 
@@ -197,22 +197,22 @@ export default async function ArticleDetailPage({
       </Card>
 
       <Card className="mt-6">
-        <h2 className="text-2xl font-bold text-[#14532D]">
+        <h2 className="text-2xl font-bold text-[#171B18]">
           รายละเอียดคอร์ส
         </h2>
 
-        <p className="mt-4 whitespace-pre-line leading-8 text-gray-700">
+        <p className="mt-4 whitespace-pre-line leading-8 text-[#282B28]">
           {course.description}
         </p>
       </Card>
 
       <Card className="mt-6">
-        <h2 className="text-2xl font-bold text-[#14532D]">
+        <h2 className="text-2xl font-bold text-[#171B18]">
           เนื้อหาในคอร์ส
         </h2>
 
         {courseLessons.length === 0 ? (
-          <div className="mt-5 rounded-2xl border border-dashed border-green-200 bg-green-50 p-5 text-gray-600">
+          <div className="mt-5 rounded-2xl border border-dashed border-[#2E7D32]/25 bg-[#2E7D32]/10 p-5 text-[#282B28]/75">
             คอร์สนี้ยังไม่มีบทเรียน
           </div>
         ) : (
@@ -225,23 +225,23 @@ export default async function ArticleDetailPage({
               return (
                 <div
                   key={lesson.id}
-                  className="rounded-2xl border border-green-100 bg-green-50 p-5"
+                  className="rounded-2xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-5"
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div>
-                      <h3 className="font-bold text-[#14532D]">
+                      <h3 className="font-bold text-[#171B18]">
                         บทเรียนที่ {index + 1}:{" "}
                         {lesson.title}
                       </h3>
 
                       {lesson.description && (
-                        <p className="mt-2 whitespace-pre-line text-sm leading-7 text-gray-600">
+                        <p className="mt-2 whitespace-pre-line text-sm leading-7 text-[#282B28]/75">
                           {lesson.description}
                         </p>
                       )}
                     </div>
 
-                    <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#14532D]">
+                    <span className="shrink-0 rounded-full bg-[#FFFDF7] px-3 py-1 text-xs font-semibold text-[#171B18]">
                       ลำดับที่ {lesson.lesson_order}
                     </span>
                   </div>

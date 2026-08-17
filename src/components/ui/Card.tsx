@@ -12,10 +12,10 @@ export default function Card({
   return (
     <div
       className={`
-        bg-white
+        bg-[#FFFDF7]
         rounded-3xl
         border
-        border-green-100
+        border-[#2E7D32]/15
         shadow-sm
         p-6
         transition-all

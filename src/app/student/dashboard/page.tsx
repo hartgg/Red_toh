@@ -81,34 +81,34 @@ export default async function StudentDashboardPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <section className="rounded-3xl bg-[#14532D] p-6 text-white shadow-sm md:p-8">
-        <p className="text-sm font-semibold text-green-100">
+      <section className="rounded-3xl bg-[#C63228] p-6 text-white shadow-sm md:p-8">
+        <p className="text-sm font-semibold text-white/80">
           สวัสดีคุณ {profile.full_name ?? "ผู้เรียน"}
         </p>
         <h1 className="mt-3 text-3xl font-bold md:text-4xl">
           วันนี้มาเรียนรู้อาชีพเกษตรต่อกันครับ
         </h1>
-        <p className="mt-3 max-w-2xl text-green-50">
+        <p className="mt-3 max-w-2xl text-white/85">
           หน้านี้รวมคอร์สที่สมัครไว้ ความคืบหน้า และทางลัดกลับไปเรียนบทเรียนล่าสุด
         </p>
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-3">
-        <div className="rounded-3xl border border-green-100 bg-white p-5 shadow-sm">
-          <p className="text-sm text-gray-500">คอร์สที่สมัคร</p>
-          <p className="mt-2 text-3xl font-bold text-[#14532D]">
+        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+          <p className="text-sm text-[#282B28]/60">คอร์สที่สมัคร</p>
+          <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {dashboardCourses.length}
           </p>
         </div>
-        <div className="rounded-3xl border border-green-100 bg-white p-5 shadow-sm">
-          <p className="text-sm text-gray-500">บทเรียนที่เรียนจบ</p>
-          <p className="mt-2 text-3xl font-bold text-[#14532D]">
+        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+          <p className="text-sm text-[#282B28]/60">บทเรียนที่เรียนจบ</p>
+          <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {(progressRows ?? []).length}
           </p>
         </div>
-        <div className="rounded-3xl border border-green-100 bg-white p-5 shadow-sm">
-          <p className="text-sm text-gray-500">คอร์สที่เรียนครบ</p>
-          <p className="mt-2 text-3xl font-bold text-[#14532D]">
+        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+          <p className="text-sm text-[#282B28]/60">คอร์สที่เรียนครบ</p>
+          <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {completedCourses}
           </p>
         </div>
@@ -116,24 +116,24 @@ export default async function StudentDashboardPage() {
 
       <section className="mt-8">
         <div className="mb-4 flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-bold text-[#14532D]">
+          <h2 className="text-2xl font-bold text-[#171B18]">
             คอร์สของฉัน
           </h2>
           <Link
             href="/student/courses"
-            className="text-sm font-semibold text-[#14532D] hover:underline"
+            className="text-sm font-semibold text-[#171B18] hover:underline"
           >
             ดูทั้งหมด
           </Link>
         </div>
 
         {dashboardCourses.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-green-200 bg-white p-10 text-center text-gray-600">
+          <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
             ยังไม่ได้สมัครคอร์ส ลองเลือกอาชีพที่สนใจเพื่อเริ่มเรียนได้เลย
             <div className="mt-5">
               <Link
                 href="/courses"
-                className="inline-flex rounded-2xl bg-[#14532D] px-5 py-3 font-semibold text-white"
+                className="inline-flex rounded-2xl bg-[#C63228] px-5 py-3 font-semibold text-white"
               >
                 ดูคอร์สทั้งหมด
               </Link>
@@ -154,24 +154,24 @@ export default async function StudentDashboardPage() {
                 <Link
                   key={course.id}
                   href={`/courses/${course.id}`}
-                  className="rounded-3xl border border-green-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <h3 className="text-xl font-bold text-[#14532D]">
+                  <h3 className="text-xl font-bold text-[#171B18]">
                     {course.title}
                   </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-600">
+                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#282B28]/75">
                     {course.description}
                   </p>
                   <div className="mt-4">
-                    <div className="h-3 overflow-hidden rounded-full bg-green-100">
+                    <div className="h-3 overflow-hidden rounded-full bg-[#2E7D32]/15">
                       <div
-                        className="h-full rounded-full bg-[#14532D]"
+                        className="h-full rounded-full bg-[#C63228]"
                         style={{
                           width: `${percent}%`,
                         }}
                       />
                     </div>
-                    <p className="mt-2 text-sm font-semibold text-gray-600">
+                    <p className="mt-2 text-sm font-semibold text-[#282B28]/75">
                       เรียนแล้ว {course.completedCount}/
                       {course.lessonCount} บทเรียน
                     </p>

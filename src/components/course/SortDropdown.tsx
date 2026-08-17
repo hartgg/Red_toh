@@ -19,16 +19,16 @@ export default function SortDropdown({
         w-full
         rounded-2xl
         border
-        border-green-200
-        bg-white
+        border-[#2E7D32]/25
+        bg-[#FFFDF7]
         px-4
         py-3
         text-sm
         outline-none
         transition
-        focus:border-[#14532D]
+        focus:border-[#C63228]
         focus:ring-2
-        focus:ring-green-100
+        focus:ring-[#C63228]/10
         md:w-56
       "
     >

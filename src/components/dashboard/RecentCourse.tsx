@@ -15,21 +15,21 @@ export default function RecentCourse({
   courses,
 }: RecentCourseProps) {
   return (
-    <section className="rounded-3xl border border-green-100 bg-white p-6 shadow-sm">
+    <section className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#14532D]">
+          <h2 className="text-2xl font-bold text-[#171B18]">
             คอร์สล่าสุด
           </h2>
 
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-[#282B28]/60">
             รายการคอร์สที่สร้างล่าสุด
           </p>
         </div>
 
         <Link
           href="/farmer/articles"
-          className="flex items-center gap-2 text-sm font-medium text-[#14532D] hover:underline"
+          className="flex items-center gap-2 text-sm font-medium text-[#171B18] hover:underline"
         >
           ดูทั้งหมด
           <ArrowRight size={18} />
@@ -37,7 +37,7 @@ export default function RecentCourse({
       </div>
 
       {courses.length === 0 ? (
-        <div className="rounded-2xl bg-gray-50 p-8 text-center text-gray-500">
+        <div className="rounded-2xl bg-[#F5F1E8] p-8 text-center text-[#282B28]/60">
           ยังไม่มีคอร์ส
         </div>
       ) : (
@@ -46,25 +46,25 @@ export default function RecentCourse({
             <Link
               key={course.id}
               href={`/farmer/articles/${course.id}`}
-              className="flex items-center justify-between rounded-2xl border border-green-100 p-4 transition hover:bg-green-50"
+              className="flex items-center justify-between rounded-2xl border border-[#2E7D32]/15 p-4 transition hover:bg-[#2E7D32]/10"
             >
               <div>
-                <h3 className="font-semibold text-[#14532D]">
+                <h3 className="font-semibold text-[#171B18]">
                   {course.title}
                 </h3>
 
-                <p className="mt-1 line-clamp-1 text-sm text-gray-500">
+                <p className="mt-1 line-clamp-1 text-sm text-[#282B28]/60">
                   {course.description}
                 </p>
 
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-xs text-[#282B28]/45">
                   {new Date(
                     course.created_at
                   ).toLocaleDateString("th-TH")}
                 </p>
               </div>
 
-              <span className="shrink-0 rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+              <span className="shrink-0 rounded-full bg-[#2E7D32]/15 px-3 py-1 text-xs font-medium text-[#2E7D32]">
                 {getStatusLabel(course.status)}
               </span>
             </Link>

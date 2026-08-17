@@ -362,7 +362,7 @@ export default function EditCourseForm({
     >
       <Card className="space-y-6">
         <div>
-          <label className="mb-2 block font-medium text-[#14532D]">
+          <label className="mb-2 block font-medium text-[#171B18]">
             ชื่อคอร์ส
           </label>
 
@@ -373,12 +373,12 @@ export default function EditCourseForm({
               setTitle(event.target.value)
             }
             disabled={isSubmitting}
-            className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
           />
         </div>
 
         <div>
-          <label className="mb-2 block font-medium text-[#14532D]">
+          <label className="mb-2 block font-medium text-[#171B18]">
             รายละเอียดคอร์ส
           </label>
 
@@ -389,17 +389,17 @@ export default function EditCourseForm({
               setDescription(event.target.value)
             }
             disabled={isSubmitting}
-            className="w-full resize-none rounded-2xl border border-green-200 px-4 py-3 leading-7 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+            className="w-full resize-none rounded-2xl border border-[#2E7D32]/25 px-4 py-3 leading-7 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
           />
         </div>
 
         {course.image_url && !imageFile && (
           <div>
-            <p className="mb-2 block font-medium text-[#14532D]">
+            <p className="mb-2 block font-medium text-[#171B18]">
               รูปปกปัจจุบัน
             </p>
 
-            <div className="relative h-64 overflow-hidden rounded-2xl bg-green-50">
+            <div className="relative h-64 overflow-hidden rounded-2xl bg-[#2E7D32]/10">
               <Image
                 src={course.image_url}
                 alt={course.title}
@@ -418,7 +418,7 @@ export default function EditCourseForm({
         />
 
         <div>
-          <label className="mb-2 block font-medium text-[#14532D]">
+          <label className="mb-2 block font-medium text-[#171B18]">
             สถานะคอร์ส
           </label>
 
@@ -430,7 +430,7 @@ export default function EditCourseForm({
               )
             }
             disabled={isSubmitting}
-            className="w-full rounded-2xl border border-green-200 bg-white px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100 md:w-72"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 bg-[#FFFDF7] px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD] md:w-72"
           >
             <option value="published">
               เผยแพร่

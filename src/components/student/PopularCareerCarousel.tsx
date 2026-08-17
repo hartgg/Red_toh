@@ -80,7 +80,7 @@ export default function PopularCareerCarousel({
                   className="object-cover"
                 />
               ) : (
-                <div className="h-full w-full bg-gray-200" />
+                <div className="h-full w-full bg-[#E4DED3]" />
               )}
             </div>
           );
@@ -95,8 +95,8 @@ export default function PopularCareerCarousel({
               className={clsx(
                 "h-3 rounded-full transition-all",
                 index === activeIndex
-                  ? "w-9 bg-white"
-                  : "w-3 bg-white/70"
+                  ? "w-9 bg-[#FFFDF7]"
+                  : "w-3 bg-[#FFFDF7]/70"
               )}
               aria-label={`ดูภาพที่ ${index + 1}`}
             />

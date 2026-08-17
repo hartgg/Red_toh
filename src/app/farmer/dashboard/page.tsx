@@ -80,15 +80,15 @@ export default async function FarmerDashboard() {
 
       <RecentCourse courses={courses ?? []} />
 
-      <div className="rounded-3xl border border-green-100 bg-white p-6 shadow-sm">
+      <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-[#14532D]">
+          <h2 className="text-2xl font-bold text-[#171B18]">
             ข้อมูลเกษตรกร
           </h2>
 
           <Link
             href="/farmer/profile"
-            className="text-sm font-medium text-[#14532D] hover:underline"
+            className="text-sm font-medium text-[#171B18] hover:underline"
           >
             แก้ไขข้อมูล
           </Link>
@@ -97,7 +97,7 @@ export default async function FarmerDashboard() {
         {farmer ? (
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#282B28]/60">
                 ชื่อ
               </p>
 
@@ -107,7 +107,7 @@ export default async function FarmerDashboard() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#282B28]/60">
                 เบอร์โทร
               </p>
 
@@ -117,7 +117,7 @@ export default async function FarmerDashboard() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#282B28]/60">
                 จังหวัด
               </p>
 
@@ -127,7 +127,7 @@ export default async function FarmerDashboard() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#282B28]/60">
                 พื้นที่ทำการเกษตร
               </p>
 
@@ -137,7 +137,7 @@ export default async function FarmerDashboard() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#282B28]/60">
                 อาชีพทางการเกษตร
               </p>
 
@@ -147,14 +147,14 @@ export default async function FarmerDashboard() {
             </div>
           </div>
         ) : (
-          <div className="rounded-2xl bg-gray-50 p-8 text-center">
-            <p className="mb-4 text-gray-600">
+          <div className="rounded-2xl bg-[#F5F1E8] p-8 text-center">
+            <p className="mb-4 text-[#282B28]/75">
               ยังไม่มีข้อมูลเกษตรกร
             </p>
 
             <Link
               href="/farmer/profile"
-              className="rounded-xl bg-[#14532D] px-5 py-3 text-white hover:bg-[#166534]"
+              className="rounded-xl bg-[#C63228] px-5 py-3 text-white hover:bg-[#A92B23]"
             >
               เพิ่มข้อมูลเกษตรกร
             </Link>

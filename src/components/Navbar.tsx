@@ -27,7 +27,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-green-100 bg-[#F8FAF7]/90 backdrop-blur">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#171B18]/95 text-white backdrop-blur">
       <div className="flex h-16 w-full items-center justify-between px-6 lg:px-8">
         <Link
           href="/farmer/dashboard"
@@ -42,11 +42,11 @@ export default function Navbar() {
           />
 
           <div>
-            <h1 className="text-xl font-bold text-[#14532D]">
-              RED TOH
+            <h1 className="text-xl font-bold text-white">
+              <span className="text-[#C63228]">RED</span> TOH
             </h1>
 
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-white/60">
               Smart Agriculture Learning
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={logout}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#14532D] px-5 py-2 text-white transition hover:bg-[#166534]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#C63228] px-5 py-2 text-white transition hover:bg-[#A92B23]"
           >
             <LogOut size={18} />
             ออกจากระบบ
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="text-[#14532D] md:hidden"
+          className="text-white md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="เปิดเมนู"
         >
@@ -74,7 +74,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="space-y-3 border-t border-green-100 bg-white px-6 py-4 md:hidden">
+        <div className="space-y-3 border-t border-white/10 bg-[#171B18] px-6 py-4 md:hidden">
           {farmerMenus.map((menu) => {
             const Icon = menu.icon;
             const isActive =
@@ -90,8 +90,8 @@ export default function Navbar() {
                 className={clsx(
                   "flex items-center gap-3 rounded-xl px-4 py-3 transition",
                   isActive
-                    ? "bg-green-100 font-semibold text-[#14532D]"
-                    : "text-gray-700 hover:bg-green-50 hover:text-[#14532D]"
+                    ? "bg-[#FFFDF7]/10 font-semibold text-white"
+                    : "text-white/75 hover:bg-[#FFFDF7]/10 hover:text-white"
                 )}
               >
                 <Icon size={20} />
@@ -103,7 +103,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={logout}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#14532D] py-3 text-white"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C63228] py-3 text-white"
           >
             <LogOut size={18} />
             ออกจากระบบ

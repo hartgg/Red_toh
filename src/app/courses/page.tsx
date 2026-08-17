@@ -125,8 +125,8 @@ export default async function CoursesPage({
   const copy = goalCopy[activeGoal];
 
   return (
-    <main className="min-h-screen bg-[#F8FAF7]">
-      <header className="border-b border-green-100 bg-white">
+    <main className="min-h-screen bg-[#F5F1E8]">
+      <header className="border-b border-[#2E7D32]/15 bg-[#FFFDF7]">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -138,7 +138,7 @@ export default async function CoursesPage({
               height={48}
               alt="RED TOH Logo"
             />
-            <span className="text-2xl font-bold text-[#14532D]">
+            <span className="text-2xl font-bold text-[#171B18]">
               RED TOH
             </span>
           </Link>
@@ -146,7 +146,7 @@ export default async function CoursesPage({
           <nav className="flex items-center gap-2 text-sm font-semibold">
             <Link
               href="/"
-              className="rounded-xl px-3 py-2 text-[#14532D] hover:bg-green-50"
+              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
             >
               หน้าแรก
             </Link>
@@ -155,7 +155,7 @@ export default async function CoursesPage({
               <>
                 <Link
                   href={dashboardHref}
-                  className="rounded-xl px-3 py-2 text-[#14532D] hover:bg-green-50"
+                  className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
                 >
                   หน้าผู้เรียน
                 </Link>
@@ -163,7 +163,7 @@ export default async function CoursesPage({
                 {isStudent && (
                   <Link
                     href="/student/courses"
-                    className="hidden rounded-xl bg-[#14532D] px-4 py-2 text-white hover:bg-[#166534] sm:inline-flex"
+                    className="hidden rounded-xl bg-[#C63228] px-4 py-2 text-white hover:bg-[#A92B23] sm:inline-flex"
                   >
                     คอร์สของฉัน
                   </Link>
@@ -175,14 +175,14 @@ export default async function CoursesPage({
               <>
                 <Link
                   href="/register"
-                  className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-[#14532D] hover:bg-green-50 sm:inline-flex"
+                  className="hidden rounded-xl border border-[#C63228] px-4 py-2 text-[#171B18] hover:bg-[#C63228]/10 sm:inline-flex"
                 >
                   สมัครสมาชิก
                 </Link>
 
                 <Link
                   href="/login"
-                  className="rounded-xl bg-[#14532D] px-4 py-2 text-white"
+                  className="rounded-xl bg-[#C63228] px-4 py-2 text-white"
                 >
                   เข้าสู่ระบบ
                 </Link>
@@ -196,42 +196,42 @@ export default async function CoursesPage({
         <div className="mb-8">
           <Link
             href="/"
-            className="text-sm font-semibold text-[#14532D] hover:underline"
+            className="text-sm font-semibold text-[#171B18] hover:underline"
           >
             กลับหน้าแรก
           </Link>
 
-          <h1 className="mt-4 text-3xl font-bold text-[#14532D] md:text-4xl">
+          <h1 className="mt-4 text-3xl font-bold text-[#171B18] md:text-4xl">
             {copy.title}
           </h1>
 
-          <p className="mt-3 max-w-2xl leading-7 text-gray-600">
+          <p className="mt-3 max-w-2xl leading-7 text-[#282B28]/75">
             {copy.description}
           </p>
         </div>
 
         <form
           action="/courses"
-          className="mb-8 flex flex-col gap-3 rounded-3xl border border-green-100 bg-white p-4 shadow-sm sm:flex-row"
+          className="mb-8 flex flex-col gap-3 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-4 shadow-sm sm:flex-row"
         >
           <input
             name="search"
             defaultValue={search}
             placeholder="ค้นหาอาชีพหรือคอร์ส"
-            className="min-h-12 flex-1 rounded-2xl border border-green-200 px-4 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="min-h-12 flex-1 rounded-2xl border border-[#2E7D32]/25 px-4 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
           />
           <input
             type="hidden"
             name="goal"
             value={activeGoal}
           />
-          <button className="rounded-2xl bg-[#14532D] px-6 py-3 font-semibold text-white">
+          <button className="rounded-2xl bg-[#C63228] px-6 py-3 font-semibold text-white">
             ค้นหา
           </button>
         </form>
 
         {filteredCourses.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-green-200 bg-white p-10 text-center text-gray-600">
+          <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
             ไม่พบอาชีพหรือคอร์สที่ตรงกับการค้นหา
           </div>
         ) : (

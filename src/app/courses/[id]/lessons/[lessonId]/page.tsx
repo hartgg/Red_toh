@@ -87,18 +87,18 @@ export default async function LessonPage({
   const completed = completedLessonIds.has(lesson.id);
 
   return (
-    <main className="min-h-screen bg-[#F8FAF7]">
-      <header className="border-b border-green-100 bg-white">
+    <main className="min-h-screen bg-[#F5F1E8]">
+      <header className="border-b border-[#2E7D32]/15 bg-[#FFFDF7]">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href={`/courses/${course.id}`}
-            className="text-sm font-semibold text-[#14532D] hover:underline"
+            className="text-sm font-semibold text-[#171B18] hover:underline"
           >
             กลับหน้าคอร์ส
           </Link>
           <Link
             href="/student/dashboard"
-            className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white"
+            className="rounded-xl bg-[#C63228] px-4 py-2 text-sm font-medium text-white"
           >
             หน้าผู้เรียน
           </Link>
@@ -106,11 +106,11 @@ export default async function LessonPage({
       </header>
 
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
-        <section className="rounded-3xl border border-green-100 bg-white p-6 shadow-sm md:p-8">
-          <p className="text-sm font-semibold text-green-700">
+        <section className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm md:p-8">
+          <p className="text-sm font-semibold text-[#2E7D32]">
             {course.title}
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-[#14532D]">
+          <h1 className="mt-2 text-3xl font-bold text-[#171B18]">
             บทเรียนที่ {lessonIndex + 1}: {lesson.title}
           </h1>
 
@@ -124,14 +124,14 @@ export default async function LessonPage({
                 allowFullScreen
               />
             ) : (
-              <div className="flex aspect-video items-center justify-center bg-green-50 p-8 text-center text-gray-600">
+              <div className="flex aspect-video items-center justify-center bg-[#2E7D32]/10 p-8 text-center text-[#282B28]/75">
                 บทเรียนนี้ยังไม่มีวิดีโอ YouTube
               </div>
             )}
           </div>
 
           {lesson.description && (
-            <p className="mt-6 whitespace-pre-line text-lg leading-8 text-gray-700">
+            <p className="mt-6 whitespace-pre-line text-lg leading-8 text-[#282B28]">
               {lesson.description}
             </p>
           )}
@@ -147,7 +147,7 @@ export default async function LessonPage({
               {previousLesson && (
                 <Link
                   href={`/courses/${course.id}/lessons/${previousLesson.id}`}
-                  className="rounded-2xl border border-green-200 px-4 py-3 font-semibold text-[#14532D] hover:bg-green-50"
+                  className="rounded-2xl border border-[#2E7D32]/25 px-4 py-3 font-semibold text-[#171B18] hover:bg-[#2E7D32]/10"
                 >
                   บทก่อนหน้า
                 </Link>
@@ -155,7 +155,7 @@ export default async function LessonPage({
               {nextLesson && (
                 <Link
                   href={`/courses/${course.id}/lessons/${nextLesson.id}`}
-                  className="rounded-2xl bg-[#14532D] px-4 py-3 font-semibold text-white hover:bg-[#166534]"
+                  className="rounded-2xl bg-[#C63228] px-4 py-3 font-semibold text-white hover:bg-[#A92B23]"
                 >
                   บทถัดไป
                 </Link>
@@ -164,11 +164,11 @@ export default async function LessonPage({
           </div>
         </section>
 
-        <aside className="rounded-3xl border border-green-100 bg-white p-6 shadow-sm">
-          <h2 className="text-2xl font-bold text-[#14532D]">
+        <aside className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-[#171B18]">
             รายการบทเรียน
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-[#282B28]/75">
             เรียนจบแล้ว {completedLessonIds.size}/
             {courseLessons.length} บทเรียน
           </p>
@@ -184,21 +184,21 @@ export default async function LessonPage({
                   href={`/courses/${course.id}/lessons/${item.id}`}
                   className={
                     isActive
-                      ? "block rounded-2xl border border-[#14532D] bg-green-50 p-4"
-                      : "block rounded-2xl border border-green-100 p-4 hover:bg-green-50"
+                      ? "block rounded-2xl border border-[#C63228] bg-[#2E7D32]/10 p-4"
+                      : "block rounded-2xl border border-[#2E7D32]/15 p-4 hover:bg-[#2E7D32]/10"
                   }
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-xs font-semibold text-green-700">
+                      <p className="text-xs font-semibold text-[#2E7D32]">
                         บทเรียนที่ {index + 1}
                       </p>
-                      <h3 className="mt-1 font-bold text-[#14532D]">
+                      <h3 className="mt-1 font-bold text-[#171B18]">
                         {item.title}
                       </h3>
                     </div>
                     {isCompleted && (
-                      <span className="shrink-0 rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
+                      <span className="shrink-0 rounded-full bg-[#2E7D32]/15 px-2 py-1 text-xs font-semibold text-[#2E7D32]">
                         จบแล้ว
                       </span>
                     )}

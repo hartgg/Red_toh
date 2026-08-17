@@ -80,7 +80,7 @@ export default function CourseMedia({
 
   return (
     <div>
-      <label className="mb-2 block font-medium text-[#14532D]">
+      <label className="mb-2 block font-medium text-[#171B18]">
         รูปปกคอร์ส
       </label>
 
@@ -94,12 +94,12 @@ export default function CourseMedia({
           rounded-3xl
           border-2
           border-dashed
-          border-green-200
-          bg-green-50
+          border-[#2E7D32]/25
+          bg-[#2E7D32]/10
           p-6
           transition
-          hover:border-[#14532D]
-          hover:bg-green-100
+          hover:border-[#C63228]
+          hover:bg-[#2E7D32]/15
           ${disabled ? "cursor-not-allowed opacity-60" : ""}
         `}
       >
@@ -115,12 +115,12 @@ export default function CourseMedia({
 
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="font-medium text-[#14532D]">
+                <p className="font-medium text-[#171B18]">
                   {imageFile?.name}
                 </p>
 
                 {imageFile && (
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-sm text-[#282B28]/60">
                     {formatFileSize(imageFile.size)}
                   </p>
                 )}
@@ -153,7 +153,7 @@ export default function CourseMedia({
               </button>
             </div>
 
-            <p className="mt-3 text-center text-sm text-gray-500">
+            <p className="mt-3 text-center text-sm text-[#282B28]/60">
               คลิกเพื่อเลือกรูปใหม่
             </p>
           </div>
@@ -163,15 +163,15 @@ export default function CourseMedia({
               รูป
             </div>
 
-            <p className="mt-4 font-semibold text-[#14532D]">
+            <p className="mt-4 font-semibold text-[#171B18]">
               คลิกเพื่ออัปโหลดรูปปก
             </p>
 
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-[#282B28]/60">
               JPG, PNG, WEBP
             </p>
 
-            <p className="mt-1 text-xs text-gray-400">
+            <p className="mt-1 text-xs text-[#282B28]/45">
               ขนาดไม่เกิน 5MB
             </p>
           </>

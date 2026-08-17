@@ -10,8 +10,8 @@ export default function WelcomeBanner({
       className="
         rounded-3xl
         bg-gradient-to-r
-        from-[#14532D]
-        to-[#166534]
+        from-[#171B18]
+        to-[#2E7D32]
         p-8
         text-white
         shadow-lg
@@ -25,7 +25,7 @@ export default function WelcomeBanner({
         👨‍🌾 สวัสดี {name}
       </h1>
 
-      <p className="mt-4 max-w-2xl text-green-100">
+      <p className="mt-4 max-w-2xl text-white/80">
         จัดการคอร์สเรียน อัปโหลดบทเรียน และแบ่งปันความรู้ด้านการเกษตรให้กับผู้เรียนทั่วประเทศผ่าน RED TOH
       </p>
     </section>

@@ -52,30 +52,30 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#F8FAF7] p-6">
+    <main className="flex min-h-screen items-center justify-center bg-[#F5F1E8] p-6">
       <form
         onSubmit={handleRegister}
-        className="w-full max-w-md space-y-5 rounded-3xl border border-green-100 bg-white p-6 shadow-sm"
+        className="w-full max-w-md space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
       >
         <div>
-          <p className="text-sm font-semibold text-green-700">
+          <p className="text-sm font-semibold text-[#2E7D32]">
             RED TOH
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-[#14532D]">
+          <h1 className="mt-2 text-3xl font-bold text-[#171B18]">
             สมัครสมาชิกผู้เรียน
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-[#282B28]/75">
             สำหรับผู้ที่ต้องการเรียนรู้อาชีพเกษตรและติดตามความคืบหน้าของตัวเอง
           </p>
         </div>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-gray-700">
+          <span className="text-sm font-semibold text-[#282B28]">
             ชื่อผู้เรียน
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-green-200 p-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             placeholder="เช่น สมชาย ใจดี"
             value={form.full_name}
             onChange={(event) =>
@@ -88,12 +88,12 @@ export default function RegisterPage() {
         </label>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-gray-700">
+          <span className="text-sm font-semibold text-[#282B28]">
             อีเมล
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-green-200 p-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             placeholder="you@example.com"
             type="email"
             value={form.email}
@@ -107,13 +107,13 @@ export default function RegisterPage() {
         </label>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-gray-700">
+          <span className="text-sm font-semibold text-[#282B28]">
             รหัสผ่าน
           </span>
           <input
             required
             minLength={6}
-            className="w-full rounded-2xl border border-green-200 p-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             placeholder="อย่างน้อย 6 ตัวอักษร"
             type="password"
             value={form.password}
@@ -128,26 +128,26 @@ export default function RegisterPage() {
 
         <button
           disabled={loading}
-          className="w-full rounded-2xl bg-[#14532D] p-3 font-semibold text-white transition hover:bg-[#166534] disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-2xl bg-[#C63228] p-3 font-semibold text-white transition hover:bg-[#A92B23] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "กำลังสมัคร..." : "สมัครสมาชิก"}
         </button>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-[#282B28]/75">
           มีบัญชีแล้ว?{" "}
           <Link
             href="/login"
-            className="font-semibold text-[#14532D] hover:underline"
+            className="font-semibold text-[#171B18] hover:underline"
           >
             เข้าสู่ระบบ
           </Link>
         </p>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-[#282B28]/75">
           เป็นฟาร์มเมอร์และอยากเปิดคอร์ส?{" "}
           <Link
             href="/farmer/register"
-            className="font-semibold text-[#14532D] hover:underline"
+            className="font-semibold text-[#171B18] hover:underline"
           >
             สมัครเป็นฟาร์มเมอร์
           </Link>

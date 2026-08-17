@@ -57,19 +57,19 @@ export default function StudentProfileForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-3xl border border-green-100 bg-white p-6 shadow-sm"
+      className="space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
     >
       <div>
-        <h2 className="text-2xl font-bold text-[#14532D]">
+        <h2 className="text-2xl font-bold text-[#171B18]">
           ข้อมูลผู้เรียน
         </h2>
-        <p className="mt-2 text-sm text-gray-600">
+        <p className="mt-2 text-sm text-[#282B28]/75">
           ใช้สำหรับแสดงชื่อในหน้าผู้เรียนและติดตามคอร์สของคุณ
         </p>
       </div>
 
       <label className="block space-y-2">
-        <span className="text-sm font-semibold text-gray-700">
+        <span className="text-sm font-semibold text-[#282B28]">
           ชื่อผู้เรียน
         </span>
         <input
@@ -81,18 +81,18 @@ export default function StudentProfileForm({
             setErrorMessage("");
           }}
           disabled={saving}
-          className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:bg-gray-100"
+          className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:bg-[#EEE8DD]"
         />
       </label>
 
       <label className="block space-y-2">
-        <span className="text-sm font-semibold text-gray-700">
+        <span className="text-sm font-semibold text-[#282B28]">
           อีเมล
         </span>
         <input
           value={email ?? ""}
           disabled
-          className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-500"
+          className="w-full rounded-2xl border border-[#2E7D32]/15 bg-[#F5F1E8] px-4 py-3 text-[#282B28]/60"
         />
       </label>
 
@@ -103,7 +103,7 @@ export default function StudentProfileForm({
       )}
 
       {message && (
-        <p className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+        <p className="rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
           {message}
         </p>
       )}
@@ -111,7 +111,7 @@ export default function StudentProfileForm({
       <button
         type="submit"
         disabled={saving}
-        className="rounded-2xl bg-[#14532D] px-5 py-3 font-semibold text-white transition hover:bg-[#166534] disabled:opacity-60"
+        className="rounded-2xl bg-[#C63228] px-5 py-3 font-semibold text-white transition hover:bg-[#A92B23] disabled:opacity-60"
       >
         {saving ? "กำลังบันทึก..." : "บันทึกโปรไฟล์"}
       </button>

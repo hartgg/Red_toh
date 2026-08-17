@@ -161,9 +161,9 @@ export default function CourseFilter({
       />
 
       <div className="mb-6 flex items-center justify-between">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-[#282B28]/75">
           พบ{" "}
-          <span className="font-semibold text-[#14532D]">
+          <span className="font-semibold text-[#171B18]">
             {filteredCourses.length}
           </span>{" "}
           คอร์ส
@@ -171,7 +171,7 @@ export default function CourseFilter({
       </div>
 
       {filteredCourses.length === 0 ? (
-        <div className="rounded-3xl border border-green-100 bg-white p-10 text-center shadow-sm">
+        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-10 text-center shadow-sm">
           <div
             className="mb-4 text-4xl"
             aria-hidden="true"
@@ -179,11 +179,11 @@ export default function CourseFilter({
             คอร์ส
           </div>
 
-          <h3 className="text-xl font-bold text-[#14532D]">
+          <h3 className="text-xl font-bold text-[#171B18]">
             ไม่พบคอร์ส
           </h3>
 
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-[#282B28]/75">
             ลองเปลี่ยนคำค้นหา หรือเลือกตัวกรองใหม่
           </p>
         </div>

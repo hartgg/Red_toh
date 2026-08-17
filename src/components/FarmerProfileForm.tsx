@@ -165,7 +165,7 @@ export default function FarmerProfileForm({
   if (loading) {
     return (
       <Card>
-        <p className="text-gray-600">
+        <p className="text-[#282B28]/75">
           กำลังโหลดข้อมูลโปรไฟล์...
         </p>
       </Card>
@@ -180,7 +180,7 @@ export default function FarmerProfileForm({
       >
         <div className="grid gap-5 md:grid-cols-2">
           <div className="md:col-span-2">
-            <label className="mb-2 block font-medium text-[#14532D]">
+            <label className="mb-2 block font-medium text-[#171B18]">
               ชื่อ-นามสกุล
             </label>
 
@@ -191,12 +191,12 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               required
-              className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#14532D]">
+            <label className="mb-2 block font-medium text-[#171B18]">
               เบอร์โทรศัพท์
             </label>
 
@@ -207,12 +207,12 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               inputMode="tel"
-              className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#14532D]">
+            <label className="mb-2 block font-medium text-[#171B18]">
               จังหวัด
             </label>
 
@@ -223,12 +223,12 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               required
-              className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#14532D]">
+            <label className="mb-2 block font-medium text-[#171B18]">
               พื้นที่ทำการเกษตร
             </label>
 
@@ -238,12 +238,12 @@ export default function FarmerProfileForm({
               placeholder="เช่น 10 ไร่"
               onChange={handleChange}
               disabled={saving}
-              className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#14532D]">
+            <label className="mb-2 block font-medium text-[#171B18]">
               ประเภทเกษตรที่ทำ
             </label>
 
@@ -253,7 +253,7 @@ export default function FarmerProfileForm({
               placeholder="เช่น ปลูกข้าว ทำสวนผลไม้ เลี้ยงปลา"
               onChange={handleChange}
               disabled={saving}
-              className="w-full rounded-2xl border border-green-200 px-4 py-3 outline-none transition focus:border-[#14532D] focus:ring-2 focus:ring-green-100 disabled:cursor-not-allowed disabled:bg-gray-100"
+              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
         </div>
@@ -265,12 +265,12 @@ export default function FarmerProfileForm({
         )}
 
         {message && (
-          <p className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+          <p className="rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
             {message}
           </p>
         )}
 
-        <div className="flex flex-col gap-3 border-t border-green-100 pt-6 sm:flex-row sm:justify-end">
+        <div className="flex flex-col gap-3 border-t border-[#2E7D32]/15 pt-6 sm:flex-row sm:justify-end">
           <Button
             type="submit"
             disabled={saving}

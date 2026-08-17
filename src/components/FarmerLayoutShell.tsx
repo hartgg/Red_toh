@@ -28,7 +28,7 @@ export default function FarmerLayoutShell({
     <>
       <Navbar />
 
-      <div className="flex min-h-[calc(100vh-64px)] bg-[#F8FAF7]">
+      <div className="flex min-h-[calc(100vh-64px)] bg-[#F5F1E8]">
         <Sidebar />
 
         <main className="flex-1 p-6 md:ml-64 md:p-8">

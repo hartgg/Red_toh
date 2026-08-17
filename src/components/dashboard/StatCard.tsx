@@ -11,15 +11,15 @@ export default function StatCard({
   title,
   value,
   icon,
-  color = "bg-[#14532D]",
+  color = "bg-[#C63228]",
 }: StatCardProps) {
   return (
     <div
       className="
         rounded-3xl
         border
-        border-green-100
-        bg-white
+        border-[#2E7D32]/15
+        bg-[#FFFDF7]
         p-6
         shadow-sm
         transition-all
@@ -30,11 +30,11 @@ export default function StatCard({
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-[#282B28]/60">
             {title}
           </p>
 
-          <h2 className="mt-2 text-3xl font-bold text-[#14532D]">
+          <h2 className="mt-2 text-3xl font-bold text-[#171B18]">
             {value}
           </h2>
         </div>

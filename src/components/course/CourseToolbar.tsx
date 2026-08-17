@@ -24,7 +24,7 @@ export default function CourseToolbar({
   onSortChange,
 }: CourseToolbarProps) {
   return (
-    <div className="mb-8 flex flex-col gap-4 rounded-3xl border border-green-100 bg-white p-5 shadow-sm lg:flex-row lg:items-center lg:justify-between">
+    <div className="mb-8 flex flex-col gap-4 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm lg:flex-row lg:items-center lg:justify-between">
       <div className="flex-1">
         <SearchBox
           value={search}

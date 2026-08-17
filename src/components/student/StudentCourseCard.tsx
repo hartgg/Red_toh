@@ -25,7 +25,7 @@ export default function StudentCourseCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-center text-[10px] text-gray-400 sm:text-base">
+          <div className="flex h-full items-center justify-center text-center text-[10px] text-[#282B28]/45 sm:text-base">
             ไม่มีรูปภาพ
           </div>
         )}

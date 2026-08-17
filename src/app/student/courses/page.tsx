@@ -36,21 +36,21 @@ export default async function StudentCoursesPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-[#14532D]">
+        <h1 className="text-3xl font-bold text-[#171B18]">
           คอร์สของฉัน
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-[#282B28]/75">
           รวมคอร์สที่คุณสมัครเรียนไว้ทั้งหมด
         </p>
       </div>
 
       {(courses ?? []).length === 0 ? (
-        <div className="rounded-3xl border border-dashed border-green-200 bg-white p-10 text-center text-gray-600">
+        <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
           ยังไม่มีคอร์สในรายการของคุณ
           <div className="mt-5">
             <Link
               href="/courses"
-              className="inline-flex rounded-2xl bg-[#14532D] px-5 py-3 font-semibold text-white"
+              className="inline-flex rounded-2xl bg-[#C63228] px-5 py-3 font-semibold text-white"
             >
               เลือกคอร์สเรียน
             </Link>
@@ -62,15 +62,15 @@ export default async function StudentCoursesPage() {
             <Link
               key={course.id}
               href={`/courses/${course.id}`}
-              className="rounded-3xl border border-green-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <h2 className="text-xl font-bold text-[#14532D]">
+              <h2 className="text-xl font-bold text-[#171B18]">
                 {course.title}
               </h2>
-              <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
+              <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#282B28]/75">
                 {course.description}
               </p>
-              <span className="mt-5 inline-flex rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+              <span className="mt-5 inline-flex rounded-full bg-[#2E7D32]/15 px-3 py-1 text-xs font-semibold text-[#2E7D32]">
                 เข้าเรียน
               </span>
             </Link>

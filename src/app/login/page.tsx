@@ -83,30 +83,30 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#F8FAF7] p-6">
+    <main className="flex min-h-screen items-center justify-center bg-[#F5F1E8] p-6">
       <form
         onSubmit={handleLogin}
-        className="w-full max-w-md space-y-5 rounded-3xl border border-green-100 bg-white p-6 shadow-sm"
+        className="w-full max-w-md space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
       >
         <div>
-          <p className="text-sm font-semibold text-green-700">
+          <p className="text-sm font-semibold text-[#2E7D32]">
             RED TOH
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-[#14532D]">
+          <h1 className="mt-2 text-3xl font-bold text-[#171B18]">
             เข้าสู่ระบบ
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-[#282B28]/75">
             เข้าเรียนคอร์สของคุณ หรือจัดการระบบตามสิทธิ์ผู้ใช้
           </p>
         </div>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-gray-700">
+          <span className="text-sm font-semibold text-[#282B28]">
             อีเมล
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-green-200 p-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             type="email"
             placeholder="you@example.com"
             value={email}
@@ -117,12 +117,12 @@ export default function LoginPage() {
         </label>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-gray-700">
+          <span className="text-sm font-semibold text-[#282B28]">
             รหัสผ่าน
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-green-200 p-3 outline-none focus:border-[#14532D] focus:ring-2 focus:ring-green-100"
+            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             type="password"
             placeholder="รหัสผ่าน"
             value={password}
@@ -134,26 +134,26 @@ export default function LoginPage() {
 
         <button
           disabled={loading}
-          className="w-full rounded-2xl bg-[#14532D] p-3 font-semibold text-white transition hover:bg-[#166534] disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-2xl bg-[#C63228] p-3 font-semibold text-white transition hover:bg-[#A92B23] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
         </button>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-[#282B28]/75">
           ยังไม่มีบัญชี?{" "}
           <Link
             href="/register"
-            className="font-semibold text-[#14532D] hover:underline"
+            className="font-semibold text-[#171B18] hover:underline"
           >
             สมัครสมาชิกผู้เรียน
           </Link>
         </p>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm text-[#282B28]/75">
           ต้องการเปิดคอร์สสอน?{" "}
           <Link
             href="/farmer/register"
-            className="font-semibold text-[#14532D] hover:underline"
+            className="font-semibold text-[#171B18] hover:underline"
           >
             สมัครเป็นฟาร์มเมอร์
           </Link>

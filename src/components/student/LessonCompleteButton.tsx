@@ -63,8 +63,8 @@ export default function LessonCompleteButton({
       disabled={loading}
       className={
         completed
-          ? "rounded-2xl border border-green-300 bg-white px-5 py-3 font-semibold text-[#14532D] transition hover:bg-green-50 disabled:opacity-60"
-          : "rounded-2xl bg-[#14532D] px-5 py-3 font-semibold text-white transition hover:bg-[#166534] disabled:opacity-60"
+          ? "rounded-2xl border border-[#2E7D32]/35 bg-[#FFFDF7] px-5 py-3 font-semibold text-[#171B18] transition hover:bg-[#2E7D32]/10 disabled:opacity-60"
+          : "rounded-2xl bg-[#C63228] px-5 py-3 font-semibold text-white transition hover:bg-[#A92B23] disabled:opacity-60"
       }
     >
       {loading

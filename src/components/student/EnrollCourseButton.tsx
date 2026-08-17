@@ -74,7 +74,7 @@ export default function EnrollCourseButton({
       type="button"
       onClick={handleClick}
       disabled={loading}
-      className="w-full rounded-2xl bg-[#14532D] px-6 py-4 text-lg font-bold text-white transition hover:bg-[#166534] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      className="w-full rounded-2xl bg-[#C63228] px-6 py-4 text-lg font-bold text-white transition hover:bg-[#A92B23] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
     >
       {loading
         ? "กำลังสมัครเรียน..."

@@ -28,7 +28,7 @@ export default function CourseCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gray-100 text-gray-400">
+          <div className="flex h-full items-center justify-center bg-[#EEE8DD] text-[#282B28]/45">
             ไม่มีรูปภาพ
           </div>
         )}
@@ -44,21 +44,21 @@ export default function CourseCard({
 
       <div className="space-y-4 p-5">
         <div>
-          <h2 className="line-clamp-2 text-xl font-bold text-[#14532D]">
+          <h2 className="line-clamp-2 text-xl font-bold text-[#171B18]">
             {course.title}
           </h2>
 
-          <p className="mt-2 line-clamp-3 text-sm leading-6 text-gray-600">
+          <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#282B28]/75">
             {course.description}
           </p>
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+          <span className="rounded-full bg-[#2E7D32]/15 px-3 py-1 text-xs font-medium text-[#2E7D32]">
             {getStatusLabel(course.status)}
           </span>
 
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-[#282B28]/60">
             {new Date(course.created_at).toLocaleDateString(
               "th-TH"
             )}
@@ -66,7 +66,7 @@ export default function CourseCard({
         </div>
 
         <div className="border-t pt-4">
-          <div className="mb-4 flex items-center justify-between text-sm text-gray-500">
+          <div className="mb-4 flex items-center justify-between text-sm text-[#282B28]/60">
             <span>ผู้เรียน 0 คน</span>
             <span>คอร์สใหม่</span>
           </div>

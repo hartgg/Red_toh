@@ -14,12 +14,12 @@ export default function SectionTitle({
   return (
     <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 className="text-2xl font-bold text-[#14532D]">
+        <h2 className="text-2xl font-bold text-[#171B18]">
           {title}
         </h2>
 
         {subtitle && (
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-[#282B28]/75">
             {subtitle}
           </p>
         )}

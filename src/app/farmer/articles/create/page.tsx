@@ -301,7 +301,7 @@ export default function CreateArticlePage() {
           >
             <div className="space-y-6">
               <div>
-                <label className="mb-2 block font-medium text-[#14532D]">
+                <label className="mb-2 block font-medium text-[#171B18]">
                   ชื่อคอร์ส
                 </label>
 
@@ -318,22 +318,22 @@ export default function CreateArticlePage() {
                     w-full
                     rounded-2xl
                     border
-                    border-green-200
+                    border-[#2E7D32]/25
                     px-4
                     py-3
                     outline-none
                     transition
-                    focus:border-[#14532D]
+                    focus:border-[#C63228]
                     focus:ring-2
-                    focus:ring-green-100
+                    focus:ring-[#C63228]/10
                     disabled:cursor-not-allowed
-                    disabled:bg-gray-100
+                    disabled:bg-[#EEE8DD]
                   "
                 />
               </div>
 
               <div>
-                <label className="mb-2 block font-medium text-[#14532D]">
+                <label className="mb-2 block font-medium text-[#171B18]">
                   รายละเอียดคอร์ส
                 </label>
 
@@ -351,17 +351,17 @@ export default function CreateArticlePage() {
                     resize-none
                     rounded-2xl
                     border
-                    border-green-200
+                    border-[#2E7D32]/25
                     px-4
                     py-3
                     leading-7
                     outline-none
                     transition
-                    focus:border-[#14532D]
+                    focus:border-[#C63228]
                     focus:ring-2
-                    focus:ring-green-100
+                    focus:ring-[#C63228]/10
                     disabled:cursor-not-allowed
-                    disabled:bg-gray-100
+                    disabled:bg-[#EEE8DD]
                   "
                 />
               </div>
@@ -378,7 +378,7 @@ export default function CreateArticlePage() {
               />
 
               <div>
-                <label className="mb-2 block font-medium text-[#14532D]">
+                <label className="mb-2 block font-medium text-[#171B18]">
                   สถานะคอร์ส
                 </label>
 
@@ -394,17 +394,17 @@ export default function CreateArticlePage() {
                     w-full
                     rounded-2xl
                     border
-                    border-green-200
-                    bg-white
+                    border-[#2E7D32]/25
+                    bg-[#FFFDF7]
                     px-4
                     py-3
                     outline-none
                     transition
-                    focus:border-[#14532D]
+                    focus:border-[#C63228]
                     focus:ring-2
-                    focus:ring-green-100
+                    focus:ring-[#C63228]/10
                     disabled:cursor-not-allowed
-                    disabled:bg-gray-100
+                    disabled:bg-[#EEE8DD]
                     md:w-72
                   "
                 >
@@ -417,7 +417,7 @@ export default function CreateArticlePage() {
                   </option>
                 </select>
 
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-[#282B28]/60">
                   เลือก Draft หากยังไม่ต้องการเผยแพร่คอร์ส
                 </p>
               </div>
@@ -429,7 +429,7 @@ export default function CreateArticlePage() {
                 flex-col
                 gap-3
                 border-t
-                border-green-100
+                border-[#2E7D32]/15
                 pt-6
                 sm:flex-row
                 sm:justify-end

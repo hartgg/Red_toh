@@ -38,7 +38,7 @@ return (
 <main
 className="
 min-h-screen
-bg-[#F8FAF7]
+bg-[#F5F1E8]
 "
 >
 
