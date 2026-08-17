@@ -147,8 +147,8 @@ export default async function Home() {
   );
 
   return (
-    <main className="min-h-screen bg-[#F8FAF7]">
-      <header className="border-b border-green-100 bg-white">
+    <main className="min-h-screen bg-[#F5F1E8] text-[#171B18]">
+      <header className="border-b border-white/10 bg-[#171B18] text-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -160,24 +160,24 @@ export default async function Home() {
               height={48}
               alt="RED TOH Logo"
             />
-            <span className="text-2xl font-bold text-[#14532D]">
-              RED TOH
+            <span className="text-2xl font-bold text-white">
+              <span className="text-[#C63228]">RED</span> TOH
             </span>
           </Link>
 
           <form
             action="/courses"
-            className="hidden flex-1 items-center rounded-full border border-green-100 bg-gray-50 px-4 py-2 md:flex"
+            className="hidden flex-1 items-center rounded-full border border-white/10 bg-white/10 px-4 py-2 md:flex"
           >
             <input
               name="search"
               type="search"
               placeholder="ค้นหาอาชีพหรือคอร์ส"
-              className="w-full bg-transparent text-sm outline-none"
+              className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/60"
             />
             <Search
               size={18}
-              className="text-gray-500"
+              className="text-white/70"
             />
           </form>
 
@@ -186,14 +186,14 @@ export default async function Home() {
               <>
                 <Link
                   href="/"
-                  className="hidden rounded-xl px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                  className="hidden rounded-xl px-4 py-2 text-sm font-medium text-white/90 transition hover:bg-white/10 sm:inline-flex"
                 >
                   หน้าแรก
                 </Link>
 
                 <Link
                   href={dashboardHref}
-                  className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#166534]"
+                  className="rounded-xl bg-[#C63228] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#A92B23]"
                 >
                   หน้าผู้เรียน
                 </Link>
@@ -201,26 +201,26 @@ export default async function Home() {
                 {isStudent && (
                   <Link
                     href="/student/courses"
-                    className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                    className="hidden rounded-xl border border-white/25 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 sm:inline-flex"
                   >
                     คอร์สของฉัน
                   </Link>
                 )}
 
-                <LogoutButton />
+                <LogoutButton className="border-white/25 text-white hover:bg-white/10" />
               </>
             ) : (
               <>
                 <Link
                   href="/register"
-                  className="rounded-xl bg-[#14532D] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#166534]"
+                  className="rounded-xl bg-[#C63228] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#A92B23]"
                 >
                   สมัครสมาชิก
                 </Link>
 
                 <Link
                   href="/student/dashboard"
-                  className="hidden rounded-xl border border-[#14532D] px-4 py-2 text-sm font-medium text-[#14532D] transition hover:bg-green-50 sm:inline-flex"
+                  className="hidden rounded-xl border border-white/25 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 sm:inline-flex"
                 >
                   คอร์สของฉัน
                 </Link>
@@ -228,7 +228,7 @@ export default async function Home() {
                 <Link
                   href="/student/dashboard"
                   aria-label="เข้าสู่ระบบ"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-green-100 text-[#14532D]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#2E7D32] text-white"
                 >
                   <UserCircle size={28} />
                 </Link>
@@ -247,18 +247,18 @@ export default async function Home() {
         />
 
         <section className="py-10">
-          <h2 className="text-center text-3xl font-bold text-[#14532D]">
+          <h2 className="text-center text-2xl font-bold text-[#171B18] sm:text-3xl">
             เป้าหมายคุณคืออะไร
           </h2>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-5">
             {goalCards.map((card) => (
               <Link
                 key={card.href}
                 href={card.href}
-                className="group overflow-hidden rounded-3xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="group overflow-hidden rounded-2xl border border-[#2E7D32]/20 bg-[#171B18] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
               >
-                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-gray-200 text-xl font-bold text-gray-500 transition group-hover:bg-green-50">
+                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-gray-200 text-xs font-bold text-gray-500 transition group-hover:bg-green-50 sm:text-xl">
                   {goalImageMap.get(card.goal) ? (
                     <Image
                       src={goalImageMap.get(card.goal) ?? ""}
@@ -272,8 +272,8 @@ export default async function Home() {
                   )}
                 </div>
 
-                <div className="p-5 text-center">
-                  <h3 className="text-2xl font-bold text-[#14532D]">
+                <div className="p-2 text-center sm:p-5">
+                  <h3 className="text-xs font-bold text-white sm:text-2xl">
                     {card.title}
                   </h3>
                 </div>
@@ -288,18 +288,18 @@ export default async function Home() {
         >
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-[#14532D]">
+              <h2 className="text-3xl font-bold text-[#171B18]">
                 อาชีพทั้งหมด
               </h2>
 
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-[#282B28]/75">
                 เลือกเส้นทางเรียนรู้ที่เหมาะกับพื้นที่และเป้าหมายของคุณ
               </p>
             </div>
 
             <Link
               href="/courses"
-              className="text-sm font-semibold text-[#14532D] hover:underline"
+              className="text-sm font-semibold text-[#C63228] hover:underline"
             >
               ดูอาชีพทั้งหมด
             </Link>

@@ -1,11 +1,18 @@
 "use client";
 
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { createClient } from "@/lib/supabase/client";
 
-export default function LogoutButton() {
+interface LogoutButtonProps {
+  className?: string;
+}
+
+export default function LogoutButton({
+  className,
+}: LogoutButtonProps) {
   const router = useRouter();
   const supabase = createClient();
   const [loading, setLoading] = useState(false);
@@ -22,7 +29,10 @@ export default function LogoutButton() {
       type="button"
       onClick={handleLogout}
       disabled={loading}
-      className="rounded-xl border border-green-200 px-3 py-2 text-sm font-semibold text-[#14532D] transition hover:bg-green-50 disabled:opacity-60"
+      className={clsx(
+        "rounded-xl border border-green-200 px-3 py-2 text-sm font-semibold text-[#14532D] transition hover:bg-green-50 disabled:opacity-60",
+        className
+      )}
     >
       {loading ? "กำลังออก..." : "ออกจากระบบ"}
     </button>

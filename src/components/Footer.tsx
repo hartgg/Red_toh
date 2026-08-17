@@ -4,7 +4,7 @@ return (
 
 <footer
 className="
-bg-[#14532D]
+bg-[#171B18]
 text-white
 mt-20
 "

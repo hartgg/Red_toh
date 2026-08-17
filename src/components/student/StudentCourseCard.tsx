@@ -13,9 +13,9 @@ export default function StudentCourseCard({
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group overflow-hidden rounded-3xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+      className="group overflow-hidden rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="relative h-44 overflow-hidden bg-green-50">
+      <div className="relative h-44 overflow-hidden bg-[#171B18]/10">
         {course.image_url ? (
           <Image
             src={course.image_url}
@@ -32,15 +32,15 @@ export default function StudentCourseCard({
       </div>
 
       <div className="space-y-3 p-5">
-        <h3 className="line-clamp-2 text-lg font-bold text-[#14532D]">
+        <h3 className="line-clamp-2 text-lg font-bold text-[#171B18]">
           {course.title}
         </h3>
 
-        <p className="line-clamp-3 text-sm leading-6 text-gray-600">
+        <p className="line-clamp-3 text-sm leading-6 text-[#282B28]/75">
           {course.description}
         </p>
 
-        <span className="inline-flex rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+        <span className="inline-flex rounded-full bg-[#C63228]/10 px-3 py-1 text-xs font-semibold text-[#C63228]">
           เรียนรู้ได้ทันที
         </span>
       </div>
