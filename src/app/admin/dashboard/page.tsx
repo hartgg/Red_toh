@@ -1,3 +1,4 @@
+import AdminHomepageGoalCardsForm from "@/components/admin/AdminHomepageGoalCardsForm";
 import AdminFeaturedCareersForm from "@/components/admin/AdminFeaturedCareersForm";
 import PendingFarmersApproval from "@/components/admin/PendingFarmersApproval";
 import LogoutButton from "@/components/student/LogoutButton";
@@ -8,6 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { Course } from "@/types/course";
 import type { FarmerProfile } from "@/types/farmer";
 import type { FeaturedCareer } from "@/types/featuredCareer";
+import type { HomepageGoalCardImage } from "@/types/homepageGoalCard";
 
 interface PendingProfile {
   id: string;
@@ -40,6 +42,11 @@ export default async function AdminDashboard() {
       ascending: true,
     })
     .returns<FeaturedCareer[]>();
+
+  const { data: goalImages } = await supabase
+    .from("homepage_goal_cards")
+    .select("id,goal,image_url,created_at,updated_at")
+    .returns<HomepageGoalCardImage[]>();
 
   const { data: pendingProfiles } = await supabase
     .from("profiles")
@@ -93,6 +100,12 @@ export default async function AdminDashboard() {
         courses={courses ?? []}
         featuredCareers={featuredCareers ?? []}
       />
+
+      <div className="mt-6">
+        <AdminHomepageGoalCardsForm
+          goalImages={goalImages ?? []}
+        />
+      </div>
     </Container>
   );
 }

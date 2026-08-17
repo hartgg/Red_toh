@@ -9,17 +9,28 @@ import StudentCourseCard from "@/components/student/StudentCourseCard";
 import { createClient } from "@/lib/supabase/server";
 import type { Course } from "@/types/course";
 import type { FeaturedCareer } from "@/types/featuredCareer";
+import type {
+  HomepageGoalCardImage,
+  HomepageGoalKey,
+} from "@/types/homepageGoalCard";
 
-const goalCards = [
+const goalCards: Array<{
+  goal: HomepageGoalKey;
+  title: string;
+  href: string;
+}> = [
   {
+    goal: "primary",
     title: "อาชีพหลัก",
     href: "/courses?goal=primary",
   },
   {
-    title: "อาชีพรอง",
+    goal: "secondary",
+    title: "อาชีพเสริม",
     href: "/courses?goal=secondary",
   },
   {
+    goal: "income",
     title: "รายได้ที่คาดหวัง",
     href: "/courses?goal=income",
   },
@@ -122,6 +133,18 @@ export default async function Home() {
       ascending: true,
     })
     .returns<FeaturedCareer[]>();
+
+  const { data: goalImages } = await supabase
+    .from("homepage_goal_cards")
+    .select("id,goal,image_url,created_at,updated_at")
+    .returns<HomepageGoalCardImage[]>();
+
+  const goalImageMap = new Map(
+    (goalImages ?? []).map((goalImage) => [
+      goalImage.goal,
+      goalImage.image_url,
+    ])
+  );
 
   return (
     <main className="min-h-screen bg-[#F8FAF7]">
@@ -235,8 +258,18 @@ export default async function Home() {
                 href={card.href}
                 className="group overflow-hidden rounded-3xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex aspect-video items-center justify-center bg-gray-200 text-xl font-bold text-gray-500 transition group-hover:bg-green-50">
-                  ใส่รูป {card.title}
+                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-gray-200 text-xl font-bold text-gray-500 transition group-hover:bg-green-50">
+                  {goalImageMap.get(card.goal) ? (
+                    <Image
+                      src={goalImageMap.get(card.goal) ?? ""}
+                      alt={`รูป ${card.title}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <>ใส่รูป {card.title}</>
+                  )}
                 </div>
 
                 <div className="p-5 text-center">
