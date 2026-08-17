@@ -86,10 +86,10 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-[#F5F1E8] p-6">
       <form
         onSubmit={handleLogin}
-        className="w-full max-w-md space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
+        className="w-full max-w-md space-y-5 rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm"
       >
         <div>
-          <p className="text-sm font-semibold text-[#2E7D32]">
+          <p className="text-sm font-semibold text-[#C63228]">
             RED TOH
           </p>
           <h1 className="mt-2 text-3xl font-bold text-[#171B18]">
@@ -106,7 +106,7 @@ export default function LoginPage() {
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+            className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             type="email"
             placeholder="you@example.com"
             value={email}
@@ -122,7 +122,7 @@ export default function LoginPage() {
           </span>
           <input
             required
-            className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+            className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
             type="password"
             placeholder="รหัสผ่าน"
             value={password}

@@ -13,7 +13,7 @@ export default function StudentLayout({
 }: StudentLayoutProps) {
   return (
     <main className="min-h-screen bg-[#F5F1E8]">
-      <header className="border-b border-[#2E7D32]/15 bg-[#FFFDF7]">
+      <header className="border-b border-[#171B18]/10 bg-[#FFFDF7]">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -33,19 +33,19 @@ export default function StudentLayout({
           <nav className="flex items-center gap-2 text-sm font-semibold">
             <Link
               href="/student/dashboard"
-              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
+              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#C63228]/10"
             >
               หน้าผู้เรียน
             </Link>
             <Link
               href="/student/courses"
-              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
+              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#C63228]/10"
             >
               คอร์สของฉัน
             </Link>
             <Link
               href="/student/profile"
-              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
+              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#C63228]/10"
             >
               โปรไฟล์
             </Link>

@@ -15,7 +15,7 @@ export default function Card({
         bg-[#FFFDF7]
         rounded-3xl
         border
-        border-[#2E7D32]/15
+        border-[#171B18]/10
         shadow-sm
         p-6
         transition-all

@@ -228,7 +228,7 @@ export default function AdminHomepageGoalCardsForm({
             อัปโหลดรูปสำหรับ อาชีพหลัก / อาชีพเสริม / รายได้ที่คาดหวัง
           </p>
 
-          <p className="mt-2 rounded-2xl bg-[#2E7D32]/10 px-4 py-3 text-sm font-semibold text-[#2E7D32]">
+          <p className="mt-2 rounded-2xl bg-[#FFF8EF] px-4 py-3 text-sm font-semibold text-[#C63228]">
             ขนาดรูปแนะนำ: 1280 × 720 px หรือ 1920 × 1080 px
             สัดส่วน 16:9
           </p>
@@ -238,7 +238,7 @@ export default function AdminHomepageGoalCardsForm({
           {cards.map((card) => (
             <div
               key={card.goal}
-              className="rounded-3xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-5"
+              className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-5"
             >
               <h3 className="font-bold text-[#171B18]">
                 {card.title}
@@ -262,7 +262,7 @@ export default function AdminHomepageGoalCardsForm({
                       event.target.files?.[0] ?? null,
                   })
                 }
-                className="mt-2 w-full rounded-2xl border border-[#2E7D32]/25 bg-[#FFFDF7] px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 text-sm"
               />
 
               {card.imageUrl && (
@@ -287,12 +287,12 @@ export default function AdminHomepageGoalCardsForm({
         )}
 
         {message && (
-          <p className="rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
+          <p className="rounded-2xl border border-[#171B18]/15 bg-[#FFF8EF] px-4 py-3 text-sm text-[#C63228]">
             {message}
           </p>
         )}
 
-        <div className="flex justify-end border-t border-[#2E7D32]/15 pt-6">
+        <div className="flex justify-end border-t border-[#171B18]/10 pt-6">
           <Button
             type="submit"
             disabled={saving}

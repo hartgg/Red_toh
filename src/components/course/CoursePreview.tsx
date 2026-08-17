@@ -39,7 +39,7 @@ export default function CoursePreview({
 
   return (
     <Card className="overflow-hidden p-0">
-      <div className="border-b border-[#2E7D32]/15 bg-[#2E7D32]/10 px-6 py-4">
+      <div className="border-b border-[#171B18]/10 bg-[#FFF8EF] px-6 py-4">
         <p className="text-sm font-medium text-[#171B18]">
           ตัวอย่างคอร์ส
         </p>
@@ -102,7 +102,7 @@ export default function CoursePreview({
             </h3>
 
             {lessons.length === 0 ? (
-              <p className="rounded-2xl border border-dashed border-[#2E7D32]/25 bg-[#2E7D32]/10 p-4 text-sm text-[#282B28]/60">
+              <p className="rounded-2xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-4 text-sm text-[#282B28]/60">
                 ยังไม่มีบทเรียน
               </p>
             ) : (
@@ -110,7 +110,7 @@ export default function CoursePreview({
                 {lessons.map((lesson, index) => (
                   <div
                     key={lesson.id}
-                    className="rounded-2xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-4"
+                    className="rounded-2xl border border-[#171B18]/10 bg-[#FFF8EF] p-4"
                   >
                     <p className="text-sm font-semibold text-[#171B18]">
                       บทเรียนที่ {index + 1}
@@ -127,7 +127,7 @@ export default function CoursePreview({
                     )}
 
                     {lesson.youtube_url.trim() && (
-                      <p className="mt-2 text-sm text-[#2E7D32]">
+                      <p className="mt-2 text-sm text-[#C63228]">
                         มีวิดีโอ YouTube ในบทนี้
                       </p>
                     )}

@@ -11,7 +11,7 @@ export default function WelcomeBanner({
         rounded-3xl
         bg-gradient-to-r
         from-[#171B18]
-        to-[#2E7D32]
+        to-[#282B28]
         p-8
         text-white
         shadow-lg

@@ -54,7 +54,7 @@ export default function CourseCard({
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="rounded-full bg-[#2E7D32]/15 px-3 py-1 text-xs font-medium text-[#2E7D32]">
+          <span className="rounded-full bg-[#C63228]/15 px-3 py-1 text-xs font-medium text-[#C63228]">
             {getStatusLabel(course.status)}
           </span>
 

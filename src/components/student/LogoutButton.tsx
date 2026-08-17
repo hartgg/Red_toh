@@ -30,7 +30,7 @@ export default function LogoutButton({
       onClick={handleLogout}
       disabled={loading}
       className={clsx(
-        "rounded-xl border border-[#2E7D32]/25 px-3 py-2 text-sm font-semibold text-[#171B18] transition hover:bg-[#2E7D32]/10 disabled:opacity-60",
+        "rounded-xl border border-[#171B18]/15 px-3 py-2 text-sm font-semibold text-[#171B18] transition hover:bg-[#C63228]/10 disabled:opacity-60",
         className
       )}
     >

@@ -80,7 +80,7 @@ export default async function FarmerDashboard() {
 
       <RecentCourse courses={courses ?? []} />
 
-      <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
+      <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-[#171B18]">
             ข้อมูลเกษตรกร

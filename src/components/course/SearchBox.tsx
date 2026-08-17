@@ -24,7 +24,7 @@ export default function SearchBox({
           w-full
           rounded-2xl
           border
-          border-[#2E7D32]/25
+          border-[#171B18]/15
           bg-[#FFFDF7]
           px-4
           py-3

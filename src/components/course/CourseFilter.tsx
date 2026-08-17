@@ -171,7 +171,7 @@ export default function CourseFilter({
       </div>
 
       {filteredCourses.length === 0 ? (
-        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-10 text-center shadow-sm">
+        <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-10 text-center shadow-sm">
           <div
             className="mb-4 text-4xl"
             aria-hidden="true"

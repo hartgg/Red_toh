@@ -57,7 +57,7 @@ export default function StudentProfileForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
+      className="space-y-5 rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm"
     >
       <div>
         <h2 className="text-2xl font-bold text-[#171B18]">
@@ -81,7 +81,7 @@ export default function StudentProfileForm({
             setErrorMessage("");
           }}
           disabled={saving}
-          className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:bg-[#EEE8DD]"
+          className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:bg-[#EEE8DD]"
         />
       </label>
 
@@ -92,7 +92,7 @@ export default function StudentProfileForm({
         <input
           value={email ?? ""}
           disabled
-          className="w-full rounded-2xl border border-[#2E7D32]/15 bg-[#F5F1E8] px-4 py-3 text-[#282B28]/60"
+          className="w-full rounded-2xl border border-[#171B18]/10 bg-[#F5F1E8] px-4 py-3 text-[#282B28]/60"
         />
       </label>
 
@@ -103,7 +103,7 @@ export default function StudentProfileForm({
       )}
 
       {message && (
-        <p className="rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
+        <p className="rounded-2xl border border-[#171B18]/15 bg-[#FFF8EF] px-4 py-3 text-sm text-[#C63228]">
           {message}
         </p>
       )}

@@ -77,7 +77,7 @@ export default function PendingFarmersApproval({
       </div>
 
       {pendingFarmers.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-[#2E7D32]/25 bg-[#2E7D32]/10 p-6 text-center text-[#282B28]/75">
+        <div className="rounded-2xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-6 text-center text-[#282B28]/75">
           ยังไม่มีคำขอรออนุมัติ
         </div>
       ) : (
@@ -85,7 +85,7 @@ export default function PendingFarmersApproval({
           {pendingFarmers.map(({ profile, farmer }) => (
             <div
               key={profile.id}
-              className="rounded-3xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-5"
+              className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-5"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div>
@@ -160,7 +160,7 @@ export default function PendingFarmersApproval({
       )}
 
       {message && (
-        <p className="mt-4 rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
+        <p className="mt-4 rounded-2xl border border-[#171B18]/15 bg-[#FFF8EF] px-4 py-3 text-sm text-[#C63228]">
           {message}
         </p>
       )}

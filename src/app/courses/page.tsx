@@ -126,7 +126,7 @@ export default async function CoursesPage({
 
   return (
     <main className="min-h-screen bg-[#F5F1E8]">
-      <header className="border-b border-[#2E7D32]/15 bg-[#FFFDF7]">
+      <header className="border-b border-[#171B18]/10 bg-[#FFFDF7]">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -146,7 +146,7 @@ export default async function CoursesPage({
           <nav className="flex items-center gap-2 text-sm font-semibold">
             <Link
               href="/"
-              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
+              className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#C63228]/10"
             >
               หน้าแรก
             </Link>
@@ -155,7 +155,7 @@ export default async function CoursesPage({
               <>
                 <Link
                   href={dashboardHref}
-                  className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#2E7D32]/10"
+                  className="rounded-xl px-3 py-2 text-[#171B18] hover:bg-[#C63228]/10"
                 >
                   หน้าผู้เรียน
                 </Link>
@@ -212,13 +212,13 @@ export default async function CoursesPage({
 
         <form
           action="/courses"
-          className="mb-8 flex flex-col gap-3 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-4 shadow-sm sm:flex-row"
+          className="mb-8 flex flex-col gap-3 rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-4 shadow-sm sm:flex-row"
         >
           <input
             name="search"
             defaultValue={search}
             placeholder="ค้นหาอาชีพหรือคอร์ส"
-            className="min-h-12 flex-1 rounded-2xl border border-[#2E7D32]/25 px-4 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+            className="min-h-12 flex-1 rounded-2xl border border-[#171B18]/15 px-4 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
           />
           <input
             type="hidden"
@@ -231,7 +231,7 @@ export default async function CoursesPage({
         </form>
 
         {filteredCourses.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
+          <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
             ไม่พบอาชีพหรือคอร์สที่ตรงกับการค้นหา
           </div>
         ) : (

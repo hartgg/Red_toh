@@ -17,7 +17,7 @@ export default function Hero({
   return (
     <section
       className={cn(
-        "rounded-3xl bg-gradient-to-r from-[#171B18] to-[#2E7D32] text-white p-8 lg:p-12 shadow-lg",
+        "rounded-3xl bg-gradient-to-r from-[#171B18] to-[#282B28] text-white p-8 lg:p-12 shadow-lg",
         className
       )}
     >

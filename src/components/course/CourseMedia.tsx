@@ -94,12 +94,12 @@ export default function CourseMedia({
           rounded-3xl
           border-2
           border-dashed
-          border-[#2E7D32]/25
-          bg-[#2E7D32]/10
+          border-[#171B18]/15
+          bg-[#FFF8EF]
           p-6
           transition
           hover:border-[#C63228]
-          hover:bg-[#2E7D32]/15
+          hover:bg-[#C63228]/10
           ${disabled ? "cursor-not-allowed opacity-60" : ""}
         `}
       >

@@ -95,7 +95,7 @@ export default async function ArticleDetailPage({
               className="object-cover"
             />
           ) : (
-            <div className="flex h-full items-center justify-center bg-[#2E7D32]/10 text-[#282B28]/45">
+            <div className="flex h-full items-center justify-center bg-[#FFF8EF] text-[#282B28]/45">
               ไม่มีรูปภาพคอร์ส
             </div>
           )}
@@ -212,7 +212,7 @@ export default async function ArticleDetailPage({
         </h2>
 
         {courseLessons.length === 0 ? (
-          <div className="mt-5 rounded-2xl border border-dashed border-[#2E7D32]/25 bg-[#2E7D32]/10 p-5 text-[#282B28]/75">
+          <div className="mt-5 rounded-2xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-5 text-[#282B28]/75">
             คอร์สนี้ยังไม่มีบทเรียน
           </div>
         ) : (
@@ -225,7 +225,7 @@ export default async function ArticleDetailPage({
               return (
                 <div
                   key={lesson.id}
-                  className="rounded-2xl border border-[#2E7D32]/15 bg-[#2E7D32]/10 p-5"
+                  className="rounded-2xl border border-[#171B18]/10 bg-[#FFF8EF] p-5"
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div>

@@ -61,7 +61,7 @@ export default async function CourseDetailPage({
 
   return (
     <main className="min-h-screen bg-[#F5F1E8]">
-      <header className="border-b border-[#2E7D32]/15 bg-[#FFFDF7]">
+      <header className="border-b border-[#171B18]/10 bg-[#FFFDF7]">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -79,8 +79,8 @@ export default async function CourseDetailPage({
       </header>
 
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
-        <section className="overflow-hidden rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] shadow-sm">
-          <div className="relative h-72 bg-[#2E7D32]/10 md:h-96">
+        <section className="overflow-hidden rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] shadow-sm">
+          <div className="relative h-72 bg-[#FFF8EF] md:h-96">
             {course.image_url ? (
               <Image
                 src={course.image_url}
@@ -106,7 +106,7 @@ export default async function CourseDetailPage({
             </Link>
 
             <div>
-              <p className="text-sm font-semibold text-[#2E7D32]">
+              <p className="text-sm font-semibold text-[#C63228]">
                 คอร์สอาชีพเกษตร
               </p>
               <h1 className="mt-2 text-3xl font-bold text-[#171B18] md:text-4xl">
@@ -126,7 +126,7 @@ export default async function CourseDetailPage({
           </div>
         </section>
 
-        <aside className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
+        <aside className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm">
           <h2 className="text-2xl font-bold text-[#171B18]">
             บทเรียนในคอร์ส
           </h2>
@@ -135,7 +135,7 @@ export default async function CourseDetailPage({
           </p>
 
           {courseLessons.length === 0 ? (
-            <div className="mt-5 rounded-2xl border border-dashed border-[#2E7D32]/25 p-5 text-center text-[#282B28]/60">
+            <div className="mt-5 rounded-2xl border border-dashed border-[#171B18]/15 p-5 text-center text-[#282B28]/60">
               คอร์สนี้ยังไม่มีบทเรียน
             </div>
           ) : (
@@ -148,9 +148,9 @@ export default async function CourseDetailPage({
                       ? `/courses/${course.id}/lessons/${lesson.id}`
                       : "/login"
                   }
-                  className="block rounded-2xl border border-[#2E7D32]/15 p-4 transition hover:border-[#C63228] hover:bg-[#2E7D32]/10"
+                  className="block rounded-2xl border border-[#171B18]/10 p-4 transition hover:border-[#C63228] hover:bg-[#C63228]/10"
                 >
-                  <p className="text-xs font-semibold text-[#2E7D32]">
+                  <p className="text-xs font-semibold text-[#C63228]">
                     บทเรียนที่ {index + 1}
                   </p>
                   <h3 className="mt-1 font-bold text-[#171B18]">

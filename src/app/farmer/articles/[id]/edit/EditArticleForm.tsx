@@ -373,7 +373,7 @@ export default function EditCourseForm({
               setTitle(event.target.value)
             }
             disabled={isSubmitting}
-            className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+            className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
           />
         </div>
 
@@ -389,7 +389,7 @@ export default function EditCourseForm({
               setDescription(event.target.value)
             }
             disabled={isSubmitting}
-            className="w-full resize-none rounded-2xl border border-[#2E7D32]/25 px-4 py-3 leading-7 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+            className="w-full resize-none rounded-2xl border border-[#171B18]/15 px-4 py-3 leading-7 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
           />
         </div>
 
@@ -399,7 +399,7 @@ export default function EditCourseForm({
               รูปปกปัจจุบัน
             </p>
 
-            <div className="relative h-64 overflow-hidden rounded-2xl bg-[#2E7D32]/10">
+            <div className="relative h-64 overflow-hidden rounded-2xl bg-[#FFF8EF]">
               <Image
                 src={course.image_url}
                 alt={course.title}
@@ -430,7 +430,7 @@ export default function EditCourseForm({
               )
             }
             disabled={isSubmitting}
-            className="w-full rounded-2xl border border-[#2E7D32]/25 bg-[#FFFDF7] px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD] md:w-72"
+            className="w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD] md:w-72"
           >
             <option value="published">
               เผยแพร่

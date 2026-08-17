@@ -15,7 +15,7 @@ export default function RecentCourse({
   courses,
 }: RecentCourseProps) {
   return (
-    <section className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm">
+    <section className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[#171B18]">
@@ -46,7 +46,7 @@ export default function RecentCourse({
             <Link
               key={course.id}
               href={`/farmer/articles/${course.id}`}
-              className="flex items-center justify-between rounded-2xl border border-[#2E7D32]/15 p-4 transition hover:bg-[#2E7D32]/10"
+              className="flex items-center justify-between rounded-2xl border border-[#171B18]/10 p-4 transition hover:bg-[#C63228]/10"
             >
               <div>
                 <h3 className="font-semibold text-[#171B18]">
@@ -64,7 +64,7 @@ export default function RecentCourse({
                 </p>
               </div>
 
-              <span className="shrink-0 rounded-full bg-[#2E7D32]/15 px-3 py-1 text-xs font-medium text-[#2E7D32]">
+              <span className="shrink-0 rounded-full bg-[#C63228]/15 px-3 py-1 text-xs font-medium text-[#C63228]">
                 {getStatusLabel(course.status)}
               </span>
             </Link>

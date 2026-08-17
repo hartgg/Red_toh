@@ -7,8 +7,8 @@ export default async function FarmerPendingPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#F5F1E8] p-6">
-      <section className="max-w-2xl rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-8 text-center shadow-sm">
-        <p className="text-sm font-semibold text-[#2E7D32]">
+      <section className="max-w-2xl rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-8 text-center shadow-sm">
+        <p className="text-sm font-semibold text-[#C63228]">
           RED TOH
         </p>
         <h1 className="mt-3 text-3xl font-bold text-[#171B18]">
@@ -22,7 +22,7 @@ export default async function FarmerPendingPage() {
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="rounded-2xl border border-[#2E7D32]/25 px-5 py-3 font-semibold text-[#171B18] hover:bg-[#2E7D32]/10"
+            className="rounded-2xl border border-[#171B18]/15 px-5 py-3 font-semibold text-[#171B18] hover:bg-[#C63228]/10"
           >
             กลับหน้าแรก
           </Link>

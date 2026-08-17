@@ -57,7 +57,7 @@ export default function PopularCareerCarousel({
   }, [displaySlides.length]);
 
   return (
-    <section className="overflow-hidden border border-[#2E7D32]/20 bg-[#171B18] shadow-xl md:rounded-3xl">
+    <section className="overflow-hidden border border-[#171B18]/10 bg-[#171B18] shadow-xl md:rounded-3xl">
       <div className="relative aspect-[5/2] md:aspect-[4/1]">
         {displaySlides.map((slide, index) => {
           const isActive = index === activeIndex;

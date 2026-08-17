@@ -72,12 +72,12 @@ export default function FarmerRegisterPage() {
     <main className="flex min-h-screen items-center justify-center bg-[#F5F1E8] p-6">
       <form
         onSubmit={handleRegister}
-        className="w-full max-w-2xl space-y-5 rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-6 shadow-sm"
+        className="w-full max-w-2xl space-y-5 rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-6 shadow-sm"
       >
         <div>
           <Link
             href="/"
-            className="text-sm font-semibold text-[#2E7D32] hover:underline"
+            className="text-sm font-semibold text-[#C63228] hover:underline"
           >
             RED TOH
           </Link>
@@ -96,7 +96,7 @@ export default function FarmerRegisterPage() {
             </span>
             <input
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="เช่น สมชาย ใจดี"
               value={form.full_name}
               onChange={(event) =>
@@ -114,7 +114,7 @@ export default function FarmerRegisterPage() {
             </span>
             <input
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="you@example.com"
               type="email"
               value={form.email}
@@ -134,7 +134,7 @@ export default function FarmerRegisterPage() {
             <input
               required
               minLength={6}
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="อย่างน้อย 6 ตัวอักษร"
               type="password"
               value={form.password}
@@ -152,7 +152,7 @@ export default function FarmerRegisterPage() {
               เบอร์โทร
             </span>
             <input
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="0812345678"
               inputMode="tel"
               value={form.phone}
@@ -171,7 +171,7 @@ export default function FarmerRegisterPage() {
             </span>
             <input
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="เช่น เชียงใหม่"
               value={form.province}
               onChange={(event) =>
@@ -188,7 +188,7 @@ export default function FarmerRegisterPage() {
               พื้นที่ทำการเกษตร
             </span>
             <input
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="เช่น 10 ไร่"
               value={form.farm_area}
               onChange={(event) =>
@@ -206,7 +206,7 @@ export default function FarmerRegisterPage() {
             </span>
             <input
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+              className="w-full rounded-2xl border border-[#171B18]/15 p-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
               placeholder="เช่น ปลูกผัก เลี้ยงปลา ทำสวนผลไม้"
               value={form.agriculture_type}
               onChange={(event) =>

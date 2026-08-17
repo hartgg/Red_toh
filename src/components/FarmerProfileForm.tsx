@@ -191,7 +191,7 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+              className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
@@ -207,7 +207,7 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               inputMode="tel"
-              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+              className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
@@ -223,7 +223,7 @@ export default function FarmerProfileForm({
               onChange={handleChange}
               disabled={saving}
               required
-              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+              className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
@@ -238,7 +238,7 @@ export default function FarmerProfileForm({
               placeholder="เช่น 10 ไร่"
               onChange={handleChange}
               disabled={saving}
-              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+              className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
 
@@ -253,7 +253,7 @@ export default function FarmerProfileForm({
               placeholder="เช่น ปลูกข้าว ทำสวนผลไม้ เลี้ยงปลา"
               onChange={handleChange}
               disabled={saving}
-              className="w-full rounded-2xl border border-[#2E7D32]/25 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
+              className="w-full rounded-2xl border border-[#171B18]/15 px-4 py-3 outline-none transition focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10 disabled:cursor-not-allowed disabled:bg-[#EEE8DD]"
             />
           </div>
         </div>
@@ -265,12 +265,12 @@ export default function FarmerProfileForm({
         )}
 
         {message && (
-          <p className="rounded-2xl border border-[#2E7D32]/25 bg-[#2E7D32]/10 px-4 py-3 text-sm text-[#2E7D32]">
+          <p className="rounded-2xl border border-[#171B18]/15 bg-[#FFF8EF] px-4 py-3 text-sm text-[#C63228]">
             {message}
           </p>
         )}
 
-        <div className="flex flex-col gap-3 border-t border-[#2E7D32]/15 pt-6 sm:flex-row sm:justify-end">
+        <div className="flex flex-col gap-3 border-t border-[#171B18]/10 pt-6 sm:flex-row sm:justify-end">
           <Button
             type="submit"
             disabled={saving}

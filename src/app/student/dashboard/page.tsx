@@ -94,19 +94,19 @@ export default async function StudentDashboardPage() {
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-3">
-        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+        <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-5 shadow-sm">
           <p className="text-sm text-[#282B28]/60">คอร์สที่สมัคร</p>
           <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {dashboardCourses.length}
           </p>
         </div>
-        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+        <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-5 shadow-sm">
           <p className="text-sm text-[#282B28]/60">บทเรียนที่เรียนจบ</p>
           <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {(progressRows ?? []).length}
           </p>
         </div>
-        <div className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm">
+        <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-5 shadow-sm">
           <p className="text-sm text-[#282B28]/60">คอร์สที่เรียนครบ</p>
           <p className="mt-2 text-3xl font-bold text-[#171B18]">
             {completedCourses}
@@ -128,7 +128,7 @@ export default async function StudentDashboardPage() {
         </div>
 
         {dashboardCourses.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
+          <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
             ยังไม่ได้สมัครคอร์ส ลองเลือกอาชีพที่สนใจเพื่อเริ่มเรียนได้เลย
             <div className="mt-5">
               <Link
@@ -154,7 +154,7 @@ export default async function StudentDashboardPage() {
                 <Link
                   key={course.id}
                   href={`/courses/${course.id}`}
-                  className="rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="rounded-3xl border border-[#171B18]/10 bg-[#FFFDF7] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   <h3 className="text-xl font-bold text-[#171B18]">
                     {course.title}
@@ -163,7 +163,7 @@ export default async function StudentDashboardPage() {
                     {course.description}
                   </p>
                   <div className="mt-4">
-                    <div className="h-3 overflow-hidden rounded-full bg-[#2E7D32]/15">
+                    <div className="h-3 overflow-hidden rounded-full bg-[#C63228]/15">
                       <div
                         className="h-full rounded-full bg-[#C63228]"
                         style={{

@@ -228,7 +228,7 @@ export default async function Home() {
                 <Link
                   href="/login"
                   aria-label="เข้าสู่ระบบ"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#2E7D32] text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#C63228] text-white"
                 >
                   <UserCircle size={28} />
                 </Link>
@@ -256,9 +256,9 @@ export default async function Home() {
               <Link
                 key={card.href}
                 href={card.href}
-                className="group overflow-hidden rounded-2xl border border-[#2E7D32]/20 bg-[#171B18] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
+                className="group overflow-hidden rounded-2xl border border-[#171B18]/10 bg-[#171B18] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
               >
-                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-[#E4DED3] text-xs font-bold text-[#282B28]/60 transition group-hover:bg-[#2E7D32]/10 sm:text-xl">
+                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-[#E4DED3] text-xs font-bold text-[#282B28]/60 transition group-hover:bg-[#C63228]/10 sm:text-xl">
                   {goalImageMap.get(card.goal) ? (
                     <Image
                       src={goalImageMap.get(card.goal) ?? ""}
@@ -306,7 +306,7 @@ export default async function Home() {
           </div>
 
           {publishedCourses.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-[#2E7D32]/25 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
+            <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
               ยังไม่มีอาชีพที่เผยแพร่
             </div>
           ) : (

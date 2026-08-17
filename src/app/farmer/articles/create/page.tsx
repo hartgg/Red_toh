@@ -318,7 +318,7 @@ export default function CreateArticlePage() {
                     w-full
                     rounded-2xl
                     border
-                    border-[#2E7D32]/25
+                    border-[#171B18]/15
                     px-4
                     py-3
                     outline-none
@@ -351,7 +351,7 @@ export default function CreateArticlePage() {
                     resize-none
                     rounded-2xl
                     border
-                    border-[#2E7D32]/25
+                    border-[#171B18]/15
                     px-4
                     py-3
                     leading-7
@@ -394,7 +394,7 @@ export default function CreateArticlePage() {
                     w-full
                     rounded-2xl
                     border
-                    border-[#2E7D32]/25
+                    border-[#171B18]/15
                     bg-[#FFFDF7]
                     px-4
                     py-3
@@ -429,7 +429,7 @@ export default function CreateArticlePage() {
                 flex-col
                 gap-3
                 border-t
-                border-[#2E7D32]/15
+                border-[#171B18]/10
                 pt-6
                 sm:flex-row
                 sm:justify-end
