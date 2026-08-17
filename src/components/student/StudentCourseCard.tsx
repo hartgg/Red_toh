@@ -13,9 +13,9 @@ export default function StudentCourseCard({
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group overflow-hidden rounded-3xl border border-[#2E7D32]/15 bg-[#FFFDF7] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+      className="group overflow-hidden rounded-2xl border border-[#2E7D32]/15 bg-[#FFFDF7] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
     >
-      <div className="relative h-44 overflow-hidden bg-[#171B18]/10">
+      <div className="relative aspect-video overflow-hidden bg-[#171B18]/10 sm:h-44 sm:aspect-auto">
         {course.image_url ? (
           <Image
             src={course.image_url}
@@ -25,22 +25,22 @@ export default function StudentCourseCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-gray-400">
+          <div className="flex h-full items-center justify-center text-center text-[10px] text-gray-400 sm:text-base">
             ไม่มีรูปภาพ
           </div>
         )}
       </div>
 
-      <div className="space-y-3 p-5">
-        <h3 className="line-clamp-2 text-lg font-bold text-[#171B18]">
+      <div className="space-y-2 p-2 sm:space-y-3 sm:p-5">
+        <h3 className="line-clamp-2 text-xs font-bold text-[#171B18] sm:text-lg">
           {course.title}
         </h3>
 
-        <p className="line-clamp-3 text-sm leading-6 text-[#282B28]/75">
+        <p className="hidden line-clamp-3 text-sm leading-6 text-[#282B28]/75 sm:block">
           {course.description}
         </p>
 
-        <span className="inline-flex rounded-full bg-[#C63228]/10 px-3 py-1 text-xs font-semibold text-[#C63228]">
+        <span className="inline-flex rounded-full bg-[#C63228]/10 px-2 py-1 text-[10px] font-semibold text-[#C63228] sm:px-3 sm:text-xs">
           เรียนรู้ได้ทันที
         </span>
       </div>
