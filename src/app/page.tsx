@@ -235,7 +235,7 @@ export default async function Home() {
                 href={card.href}
                 className="group overflow-hidden rounded-3xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex aspect-[4/3] items-center justify-center bg-gray-200 text-xl font-bold text-gray-500 transition group-hover:bg-green-50">
+                <div className="flex aspect-video items-center justify-center bg-gray-200 text-xl font-bold text-gray-500 transition group-hover:bg-green-50">
                   ใส่รูป {card.title}
                 </div>
 
