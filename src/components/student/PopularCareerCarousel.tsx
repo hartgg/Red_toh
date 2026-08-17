@@ -58,7 +58,7 @@ export default function PopularCareerCarousel({
 
   return (
     <section className="overflow-hidden bg-gray-200 md:rounded-3xl">
-      <div className="relative aspect-video">
+      <div className="relative aspect-[5/2] md:aspect-[4/1]">
         {displaySlides.map((slide, index) => {
           const isActive = index === activeIndex;
 
