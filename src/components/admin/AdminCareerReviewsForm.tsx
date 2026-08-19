@@ -3,9 +3,9 @@
 import {
   ChevronUp,
   Pencil,
-  Plus,
   Trash2,
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
@@ -50,20 +50,6 @@ interface CareerReviewInsert {
   course_id: string;
   status: CareerReviewStatus;
 }
-
-const emptyReview = (
-  courseId: string
-): CareerReviewDraft => ({
-  id: `new-${crypto.randomUUID()}`,
-  persisted: false,
-  title: "",
-  description: "",
-  youtubeUrl: "",
-  incomeText: "",
-  careerType: "primary",
-  courseId,
-  status: "published",
-});
 
 function toDraft(review: CareerReview): CareerReviewDraft {
   return {
@@ -176,22 +162,6 @@ export default function AdminCareerReviewsForm({
           : review
       )
     );
-    setMessage("");
-    setErrorMessage("");
-  }
-
-  function addReview() {
-    const review = emptyReview(courses[0]?.id ?? "");
-
-    setReviews((currentReviews) => [
-      review,
-      ...currentReviews,
-    ]);
-    setExpandedIds((currentIds) => [
-      review.id,
-      ...currentIds,
-    ]);
-    setSearch("");
     setMessage("");
     setErrorMessage("");
   }
@@ -340,16 +310,12 @@ export default function AdminCareerReviewsForm({
             </p>
           </div>
 
-          <Button
-            type="button"
-            variant="outline"
-            onClick={addReview}
-            disabled={saving || courses.length === 0}
-            className="gap-2"
+          <Link
+            href="/admin/career-reviews/create"
+            className="inline-flex items-center justify-center rounded-xl bg-[#C63228] px-5 py-3 font-semibold text-white transition hover:bg-[#A92B23]"
           >
-            <Plus size={18} />
             เพิ่มคลิปรีวิว
-          </Button>
+          </Link>
         </div>
 
         <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-4">
@@ -384,8 +350,14 @@ export default function AdminCareerReviewsForm({
               ยังไม่มีคลิปรีวิวอาชีพ
             </h3>
             <p className="mt-2 text-[#282B28]/75">
-              กดปุ่มเพิ่มคลิปรีวิว เพื่อสร้างคลิปแรกสำหรับหน้าอาชีพหลัก/อาชีพเสริม
+              ไปหน้าเพิ่มคลิปรีวิว เพื่อสร้างคลิปแรกสำหรับหน้าอาชีพหลัก/อาชีพเสริม
             </p>
+            <Link
+              href="/admin/career-reviews/create"
+              className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#C63228] px-5 py-3 font-semibold text-white transition hover:bg-[#A92B23]"
+            >
+              เพิ่มคลิปรีวิว
+            </Link>
           </div>
         ) : filteredReviews.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-8 text-center text-[#282B28]/75">
