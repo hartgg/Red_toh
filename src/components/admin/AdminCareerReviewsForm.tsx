@@ -2,7 +2,7 @@
 
 import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
 
 import Button from "@/components/ui/Button";
@@ -92,13 +92,46 @@ export default function AdminCareerReviewsForm({
   const router = useRouter();
   const supabase = createClient();
   const [reviews, setReviews] = useState<CareerReviewDraft[]>(
-    careerReviews.length > 0
-      ? careerReviews.map(toDraft)
-      : [emptyReview(courses[0]?.id ?? "")]
+    careerReviews.map(toDraft)
   );
+  const [search, setSearch] = useState("");
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const filteredReviews = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase();
+
+    if (!normalizedSearch) {
+      return reviews;
+    }
+
+    const courseMap = new Map(
+      courses.map((course) => [course.id, course.title])
+    );
+
+    return reviews.filter((review) => {
+      const courseTitle = courseMap.get(review.courseId) ?? "";
+      const careerTypeLabel =
+        review.careerType === "primary"
+          ? "อาชีพหลัก"
+          : "อาชีพเสริม";
+
+      return [
+        review.title,
+        review.description,
+        review.youtubeUrl,
+        review.incomeText,
+        careerTypeLabel,
+        courseTitle,
+        review.status === "published"
+          ? "เผยแพร่"
+          : "แบบร่าง",
+      ].some((value) =>
+        value.toLowerCase().includes(normalizedSearch)
+      );
+    });
+  }, [courses, reviews, search]);
 
   function updateReview(
     id: string,
@@ -123,6 +156,7 @@ export default function AdminCareerReviewsForm({
       emptyReview(courses[0]?.id ?? ""),
       ...currentReviews,
     ]);
+    setSearch("");
     setMessage("");
     setErrorMessage("");
   }
@@ -279,14 +313,48 @@ export default function AdminCareerReviewsForm({
           </Button>
         </div>
 
+        <div className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-4">
+          <label className="block">
+            <span className="text-sm font-semibold text-[#171B18]">
+              ค้นหาคลิปรีวิว
+            </span>
+            <input
+              value={search}
+              onChange={(event) =>
+                setSearch(event.target.value)
+              }
+              placeholder="ค้นหาจากชื่ออาชีพ รายได้ ประเภท คอร์ส หรือสถานะ"
+              className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+            />
+          </label>
+
+          <p className="mt-2 text-sm text-[#282B28]/60">
+            แสดง {filteredReviews.length} จาก {reviews.length} คลิป
+          </p>
+        </div>
+
         {courses.length === 0 && (
           <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
             ยังไม่มีคอร์สที่เผยแพร่ให้เลือก กรุณาให้ฟาร์มเมอร์สร้างคอร์สก่อน
           </p>
         )}
 
-        <div className="space-y-5">
-          {reviews.map((review, index) => (
+        {reviews.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-8 text-center">
+            <h3 className="text-xl font-bold text-[#171B18]">
+              ยังไม่มีคลิปรีวิวอาชีพ
+            </h3>
+            <p className="mt-2 text-[#282B28]/75">
+              กดปุ่มเพิ่มคลิปรีวิว เพื่อสร้างคลิปแรกสำหรับหน้าอาชีพหลัก/อาชีพเสริม
+            </p>
+          </div>
+        ) : filteredReviews.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFF8EF] p-8 text-center text-[#282B28]/75">
+            ไม่พบคลิปรีวิวที่ตรงกับคำค้นหา
+          </div>
+        ) : (
+          <div className="space-y-5">
+            {filteredReviews.map((review, index) => (
             <div
               key={review.id}
               className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-5"
@@ -294,7 +362,7 @@ export default function AdminCareerReviewsForm({
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-bold text-[#171B18]">
-                    คลิปรีวิวที่ {reviews.length - index}
+                    คลิปรีวิวที่ {filteredReviews.length - index}
                   </h3>
                   <p className="mt-1 text-sm text-[#282B28]/60">
                     ใช้สำหรับหน้าอาชีพหลัก / อาชีพเสริม / รายได้ที่คาดหวัง
@@ -460,8 +528,9 @@ export default function AdminCareerReviewsForm({
                 </label>
               </div>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {errorMessage && (
           <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">

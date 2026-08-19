@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 import AdminHomepageGoalCardsForm from "@/components/admin/AdminHomepageGoalCardsForm";
 import AdminFeaturedCareersForm from "@/components/admin/AdminFeaturedCareersForm";
-import AdminCareerReviewsForm from "@/components/admin/AdminCareerReviewsForm";
 import PendingFarmersApproval from "@/components/admin/PendingFarmersApproval";
 import LogoutButton from "@/components/student/LogoutButton";
+import Card from "@/components/ui/Card";
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { requireAdmin } from "@/lib/auth";
@@ -11,7 +13,6 @@ import type { Course } from "@/types/course";
 import type { FarmerProfile } from "@/types/farmer";
 import type { FeaturedCareer } from "@/types/featuredCareer";
 import type { HomepageGoalCardImage } from "@/types/homepageGoalCard";
-import type { CareerReview } from "@/types/careerReview";
 
 interface PendingProfile {
   id: string;
@@ -44,16 +45,6 @@ export default async function AdminDashboard() {
       ascending: true,
     })
     .returns<FeaturedCareer[]>();
-
-  const { data: careerReviews } = await supabase
-    .from("career_reviews")
-    .select(
-      "id,title,description,youtube_url,income_text,career_type,course_id,status,created_at,updated_at"
-    )
-    .order("created_at", {
-      ascending: false,
-    })
-    .returns<CareerReview[]>();
 
   const { data: goalImages } = await supabase
     .from("homepage_goal_cards")
@@ -113,12 +104,26 @@ export default async function AdminDashboard() {
         featuredCareers={featuredCareers ?? []}
       />
 
-      <div className="mt-6">
-        <AdminCareerReviewsForm
-          courses={courses ?? []}
-          careerReviews={careerReviews ?? []}
-        />
-      </div>
+      <Card className="mt-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-[#171B18]">
+              คลิปรีวิวอาชีพ
+            </h2>
+
+            <p className="mt-2 leading-7 text-[#282B28]/75">
+              จัดการคลิปรีวิวอาชีพทั้งหมด ค้นหา เพิ่ม แก้ไข และลบคลิปในหน้าแยก
+            </p>
+          </div>
+
+          <Link
+            href="/admin/career-reviews"
+            className="inline-flex items-center justify-center rounded-xl bg-[#C63228] px-5 py-3 font-semibold text-white transition hover:bg-[#A92B23]"
+          >
+            ไปหน้าจัดการคลิป
+          </Link>
+        </div>
+      </Card>
 
       <div className="mt-6">
         <AdminHomepageGoalCardsForm
