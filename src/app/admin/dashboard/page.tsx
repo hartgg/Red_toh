@@ -1,5 +1,6 @@
 import AdminHomepageGoalCardsForm from "@/components/admin/AdminHomepageGoalCardsForm";
 import AdminFeaturedCareersForm from "@/components/admin/AdminFeaturedCareersForm";
+import AdminCareerReviewsForm from "@/components/admin/AdminCareerReviewsForm";
 import PendingFarmersApproval from "@/components/admin/PendingFarmersApproval";
 import LogoutButton from "@/components/student/LogoutButton";
 import Container from "@/components/ui/Container";
@@ -10,6 +11,7 @@ import type { Course } from "@/types/course";
 import type { FarmerProfile } from "@/types/farmer";
 import type { FeaturedCareer } from "@/types/featuredCareer";
 import type { HomepageGoalCardImage } from "@/types/homepageGoalCard";
+import type { CareerReview } from "@/types/careerReview";
 
 interface PendingProfile {
   id: string;
@@ -42,6 +44,16 @@ export default async function AdminDashboard() {
       ascending: true,
     })
     .returns<FeaturedCareer[]>();
+
+  const { data: careerReviews } = await supabase
+    .from("career_reviews")
+    .select(
+      "id,title,description,youtube_url,income_text,career_type,course_id,status,created_at,updated_at"
+    )
+    .order("created_at", {
+      ascending: false,
+    })
+    .returns<CareerReview[]>();
 
   const { data: goalImages } = await supabase
     .from("homepage_goal_cards")
@@ -100,6 +112,13 @@ export default async function AdminDashboard() {
         courses={courses ?? []}
         featuredCareers={featuredCareers ?? []}
       />
+
+      <div className="mt-6">
+        <AdminCareerReviewsForm
+          courses={courses ?? []}
+          careerReviews={careerReviews ?? []}
+        />
+      </div>
 
       <div className="mt-6">
         <AdminHomepageGoalCardsForm

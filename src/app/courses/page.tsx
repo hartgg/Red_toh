@@ -1,26 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import CareerReviewCard from "@/components/student/CareerReviewCard";
 import LogoutButton from "@/components/student/LogoutButton";
 import StudentCourseCard from "@/components/student/StudentCourseCard";
 import { createClient } from "@/lib/supabase/server";
+import type { CareerReviewWithCourse } from "@/types/careerReview";
 import type { Course } from "@/types/course";
 
 const goalCopy = {
   primary: {
     title: "อาชีพหลัก",
     description:
-      "คอร์สสำหรับคนที่อยากวางอาชีพเกษตรเป็นรายได้หลัก",
+      "ดูคลิปรีวิวอาชีพที่เหมาะกับการทำเป็นรายได้หลัก ก่อนเลือกคอร์สที่ใช่",
   },
   secondary: {
     title: "อาชีพเสริม",
     description:
-      "คอร์สสำหรับเริ่มทำอาชีพเสริมจากพื้นที่และเวลาที่มี",
+      "ดูคลิปรีวิวอาชีพที่เริ่มทำเสริมได้จากพื้นที่และเวลาที่มี",
   },
   income: {
     title: "รายได้ที่คาดหวัง",
     description:
-      "สำรวจคอร์สที่ช่วยต่อยอดแผนรายได้ในอนาคต",
+      "สำรวจรีวิวอาชีพพร้อมรายได้โดยประมาณ แล้วค่อยต่อไปยังคอร์สที่เกี่ยวข้อง",
   },
   all: {
     title: "อาชีพทั้งหมด",
@@ -103,6 +105,30 @@ export default async function CoursesPage({
     })
     .returns<Course[]>();
 
+  let careerReviewQuery = supabase
+    .from("career_reviews")
+    .select(
+      "id,title,description,youtube_url,income_text,career_type,course_id,status,created_at,updated_at,courses(id,user_id,title,description,image_url,status,created_at,updated_at)"
+    )
+    .eq("status", "published")
+    .order("created_at", {
+      ascending: false,
+    });
+
+  if (activeGoal === "primary" || activeGoal === "secondary") {
+    careerReviewQuery = careerReviewQuery.eq(
+      "career_type",
+      activeGoal
+    );
+  }
+
+  const { data: careerReviews } =
+    activeGoal === "all"
+      ? { data: [] }
+      : await careerReviewQuery.returns<
+          CareerReviewWithCourse[]
+        >();
+
   const filteredCourses = (courses ?? []).filter(
     (course) => {
       if (!search) {
@@ -122,7 +148,35 @@ export default async function CoursesPage({
     }
   );
 
+  const filteredCareerReviews = (careerReviews ?? []).filter(
+    (review) => {
+      if (!search) {
+        return true;
+      }
+
+      const normalizedSearch = search.toLowerCase();
+
+      return (
+        review.title
+          .toLowerCase()
+          .includes(normalizedSearch) ||
+        review.description
+          .toLowerCase()
+          .includes(normalizedSearch) ||
+        review.income_text
+          .toLowerCase()
+          .includes(normalizedSearch) ||
+        Boolean(
+          review.courses?.title
+            .toLowerCase()
+            .includes(normalizedSearch)
+        )
+      );
+    }
+  );
+
   const copy = goalCopy[activeGoal];
+  const isReviewPage = activeGoal !== "all";
 
   return (
     <main className="min-h-screen bg-[#F5F1E8]">
@@ -217,7 +271,11 @@ export default async function CoursesPage({
           <input
             name="search"
             defaultValue={search}
-            placeholder="ค้นหาอาชีพหรือคอร์ส"
+            placeholder={
+              isReviewPage
+                ? "ค้นหาอาชีพ รายได้ หรือคอร์สที่เกี่ยวข้อง"
+                : "ค้นหาอาชีพหรือคอร์ส"
+            }
             className="min-h-12 flex-1 rounded-2xl border border-[#171B18]/15 px-4 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
           />
           <input
@@ -230,7 +288,22 @@ export default async function CoursesPage({
           </button>
         </form>
 
-        {filteredCourses.length === 0 ? (
+        {isReviewPage ? (
+          filteredCareerReviews.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
+              ยังไม่มีคลิปรีวิวอาชีพที่ตรงกับหน้านี้
+            </div>
+          ) : (
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {filteredCareerReviews.map((review) => (
+                <CareerReviewCard
+                  key={review.id}
+                  review={review}
+                />
+              ))}
+            </div>
+          )
+        ) : filteredCourses.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-[#171B18]/15 bg-[#FFFDF7] p-10 text-center text-[#282B28]/75">
             ไม่พบอาชีพหรือคอร์สที่ตรงกับการค้นหา
           </div>
