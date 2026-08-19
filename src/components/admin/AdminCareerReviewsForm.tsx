@@ -13,7 +13,10 @@ import type { FormEvent } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { createClient } from "@/lib/supabase/client";
-import { isValidYoutubeUrl } from "@/lib/youtube";
+import {
+  getYoutubeEmbedUrl,
+  isValidYoutubeUrl,
+} from "@/lib/youtube";
 import type {
   CareerReview,
   CareerReviewStatus,
@@ -389,16 +392,38 @@ export default function AdminCareerReviewsForm({
             ไม่พบคลิปรีวิวที่ตรงกับคำค้นหา
           </div>
         ) : (
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
             {filteredReviews.map((review) => {
               const isExpanded = expandedIds.includes(review.id);
               const course = courseMap.get(review.courseId);
+              const embedUrl = getYoutubeEmbedUrl(review.youtubeUrl);
 
               return (
                 <div
                   key={review.id}
-                  className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-4"
+                  className={`rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-4 ${
+                    isExpanded
+                      ? "lg:col-span-2 xl:col-span-3"
+                      : ""
+                  }`}
                 >
+                  <div className="mb-4 aspect-video overflow-hidden rounded-2xl bg-[#171B18]">
+                    {embedUrl ? (
+                      <iframe
+                        src={embedUrl}
+                        title={review.title || "คลิปรีวิวอาชีพ"}
+                        className="h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center p-5 text-center text-sm text-white/70">
+                        ใส่ลิงก์ YouTube แล้วตัวอย่างคลิปจะแสดงตรงนี้
+                      </div>
+                    )}
+                  </div>
+
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap gap-2">
