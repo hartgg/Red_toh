@@ -1,6 +1,11 @@
 "use client";
 
-import { Plus, Trash2 } from "lucide-react";
+import {
+  ChevronUp,
+  Pencil,
+  Plus,
+  Trash2,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
@@ -9,12 +14,12 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { createClient } from "@/lib/supabase/client";
 import { isValidYoutubeUrl } from "@/lib/youtube";
-import type { Course } from "@/types/course";
 import type {
   CareerReview,
   CareerReviewStatus,
   CareerReviewType,
 } from "@/types/careerReview";
+import type { Course } from "@/types/course";
 
 interface AdminCareerReviewsFormProps {
   courses: Course[];
@@ -85,6 +90,16 @@ function toPayload(
   };
 }
 
+function getCareerTypeLabel(careerType: CareerReviewType) {
+  return careerType === "primary"
+    ? "อาชีพหลัก"
+    : "อาชีพเสริม";
+}
+
+function getStatusLabel(status: CareerReviewStatus) {
+  return status === "published" ? "เผยแพร่" : "แบบร่าง";
+}
+
 export default function AdminCareerReviewsForm({
   courses,
   careerReviews,
@@ -94,10 +109,16 @@ export default function AdminCareerReviewsForm({
   const [reviews, setReviews] = useState<CareerReviewDraft[]>(
     careerReviews.map(toDraft)
   );
+  const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const courseMap = useMemo(
+    () => new Map(courses.map((course) => [course.id, course])),
+    [courses]
+  );
 
   const filteredReviews = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
@@ -106,32 +127,37 @@ export default function AdminCareerReviewsForm({
       return reviews;
     }
 
-    const courseMap = new Map(
-      courses.map((course) => [course.id, course.title])
-    );
-
     return reviews.filter((review) => {
-      const courseTitle = courseMap.get(review.courseId) ?? "";
-      const careerTypeLabel =
-        review.careerType === "primary"
-          ? "อาชีพหลัก"
-          : "อาชีพเสริม";
+      const courseTitle =
+        courseMap.get(review.courseId)?.title ?? "";
 
       return [
         review.title,
         review.description,
         review.youtubeUrl,
         review.incomeText,
-        careerTypeLabel,
+        getCareerTypeLabel(review.careerType),
         courseTitle,
-        review.status === "published"
-          ? "เผยแพร่"
-          : "แบบร่าง",
+        getStatusLabel(review.status),
       ].some((value) =>
         value.toLowerCase().includes(normalizedSearch)
       );
     });
-  }, [courses, reviews, search]);
+  }, [courseMap, reviews, search]);
+
+  function expandReview(id: string) {
+    setExpandedIds((currentIds) =>
+      currentIds.includes(id)
+        ? currentIds
+        : [...currentIds, id]
+    );
+  }
+
+  function collapseReview(id: string) {
+    setExpandedIds((currentIds) =>
+      currentIds.filter((currentId) => currentId !== id)
+    );
+  }
 
   function updateReview(
     id: string,
@@ -152,9 +178,15 @@ export default function AdminCareerReviewsForm({
   }
 
   function addReview() {
+    const review = emptyReview(courses[0]?.id ?? "");
+
     setReviews((currentReviews) => [
-      emptyReview(courses[0]?.id ?? ""),
+      review,
       ...currentReviews,
+    ]);
+    setExpandedIds((currentIds) => [
+      review.id,
+      ...currentIds,
     ]);
     setSearch("");
     setMessage("");
@@ -174,6 +206,7 @@ export default function AdminCareerReviewsForm({
       setReviews((currentReviews) =>
         currentReviews.filter((item) => item.id !== review.id)
       );
+      collapseReview(review.id);
       return;
     }
 
@@ -192,6 +225,7 @@ export default function AdminCareerReviewsForm({
       setReviews((currentReviews) =>
         currentReviews.filter((item) => item.id !== review.id)
       );
+      collapseReview(review.id);
       setMessage("ลบคลิปรีวิวสำเร็จ");
       router.refresh();
     }
@@ -244,6 +278,7 @@ export default function AdminCareerReviewsForm({
         const error = validateReview(review);
 
         if (error) {
+          expandReview(review.id);
           throw new Error(error);
         }
       }
@@ -272,6 +307,7 @@ export default function AdminCareerReviewsForm({
       }
 
       setMessage("บันทึกคลิปรีวิวอาชีพสำเร็จ");
+      setExpandedIds([]);
       router.refresh();
     } catch (error) {
       setErrorMessage(
@@ -353,182 +389,240 @@ export default function AdminCareerReviewsForm({
             ไม่พบคลิปรีวิวที่ตรงกับคำค้นหา
           </div>
         ) : (
-          <div className="space-y-5">
-            {filteredReviews.map((review, index) => (
-            <div
-              key={review.id}
-              className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-5"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-bold text-[#171B18]">
-                    คลิปรีวิวที่ {filteredReviews.length - index}
-                  </h3>
-                  <p className="mt-1 text-sm text-[#282B28]/60">
-                    ใช้สำหรับหน้าอาชีพหลัก / อาชีพเสริม / รายได้ที่คาดหวัง
-                  </p>
-                </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            {filteredReviews.map((review) => {
+              const isExpanded = expandedIds.includes(review.id);
+              const course = courseMap.get(review.courseId);
 
-                <button
-                  type="button"
-                  onClick={() => void deleteReview(review)}
-                  disabled={saving}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-red-200 bg-[#FFFDF7] text-[#C63228] transition hover:bg-[#C63228]/10 disabled:opacity-60"
-                  aria-label="ลบคลิปรีวิว"
+              return (
+                <div
+                  key={review.id}
+                  className="rounded-3xl border border-[#171B18]/10 bg-[#FFF8EF] p-4"
                 >
-                  <Trash2 size={18} />
-                </button>
-              </div>
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full bg-[#C63228]/10 px-3 py-1 text-xs font-bold text-[#C63228]">
+                          {getCareerTypeLabel(review.careerType)}
+                        </span>
+                        <span className="rounded-full bg-[#171B18] px-3 py-1 text-xs font-bold text-white">
+                          {getStatusLabel(review.status)}
+                        </span>
+                      </div>
 
-              <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                <label className="block">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    ชื่ออาชีพ / ชื่อคลิป
-                  </span>
-                  <input
-                    value={review.title}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        title: event.target.value,
-                      })
-                    }
-                    disabled={saving}
-                    placeholder="เช่น ปลูกผักไฮโดรโปนิกส์"
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  />
-                </label>
+                      <h3 className="mt-3 line-clamp-1 text-lg font-bold text-[#171B18]">
+                        {review.title || "ยังไม่ได้ตั้งชื่อคลิป"}
+                      </h3>
 
-                <label className="block">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    รายได้โดยประมาณ
-                  </span>
-                  <input
-                    value={review.incomeText}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        incomeText: event.target.value,
-                      })
-                    }
-                    disabled={saving}
-                    placeholder="เช่น 15,000 - 30,000 บาท/เดือน"
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  />
-                </label>
+                      <p className="mt-1 line-clamp-2 text-sm leading-6 text-[#282B28]/75">
+                        {review.description ||
+                          "ยังไม่ได้กรอกรายละเอียดอาชีพ"}
+                      </p>
 
-                <label className="block">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    ประเภทอาชีพ
-                  </span>
-                  <select
-                    value={review.careerType}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        careerType: event.target
-                          .value as CareerReviewType,
-                      })
-                    }
-                    disabled={saving}
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  >
-                    <option value="primary">
-                      อาชีพหลัก
-                    </option>
-                    <option value="secondary">
-                      อาชีพเสริม
-                    </option>
-                  </select>
-                </label>
+                      <div className="mt-3 grid gap-2 text-sm text-[#282B28]/70">
+                        <p>
+                          <span className="font-semibold text-[#171B18]">
+                            รายได้:
+                          </span>{" "}
+                          {review.incomeText || "-"}
+                        </p>
+                        <p className="line-clamp-1">
+                          <span className="font-semibold text-[#171B18]">
+                            คอร์ส:
+                          </span>{" "}
+                          {course?.title ?? "ยังไม่ได้เลือกคอร์ส"}
+                        </p>
+                      </div>
+                    </div>
 
-                <label className="block">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    คอร์สที่เกี่ยวข้อง
-                  </span>
-                  <select
-                    value={review.courseId}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        courseId: event.target.value,
-                      })
-                    }
-                    disabled={saving}
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  >
-                    <option value="">
-                      เลือกคอร์ส
-                    </option>
-                    {courses.map((course) => (
-                      <option
-                        key={course.id}
-                        value={course.id}
+                    <div className="flex shrink-0 gap-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          isExpanded
+                            ? collapseReview(review.id)
+                            : expandReview(review.id)
+                        }
+                        disabled={saving}
+                        className="inline-flex items-center gap-2 rounded-xl border border-[#171B18]/15 bg-[#FFFDF7] px-3 py-2 text-sm font-semibold text-[#171B18] transition hover:bg-[#C63228]/10 disabled:opacity-60"
                       >
-                        {course.title}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                        {isExpanded ? (
+                          <>
+                            <ChevronUp size={16} />
+                            ย่อ
+                          </>
+                        ) : (
+                          <>
+                            <Pencil size={16} />
+                            แก้ไข
+                          </>
+                        )}
+                      </button>
 
-                <label className="block lg:col-span-2">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    YouTube URL คลิปรีวิวอาชีพ
-                  </span>
-                  <input
-                    type="url"
-                    value={review.youtubeUrl}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        youtubeUrl: event.target.value,
-                      })
-                    }
-                    disabled={saving}
-                    placeholder="https://www.youtube.com/watch?v=..."
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  />
-                </label>
+                      <button
+                        type="button"
+                        onClick={() => void deleteReview(review)}
+                        disabled={saving}
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-red-200 bg-[#FFFDF7] text-[#C63228] transition hover:bg-[#C63228]/10 disabled:opacity-60"
+                        aria-label="ลบคลิปรีวิว"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </div>
 
-                <label className="block lg:col-span-2">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    รายละเอียดอาชีพ
-                  </span>
-                  <textarea
-                    value={review.description}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        description: event.target.value,
-                      })
-                    }
-                    disabled={saving}
-                    rows={4}
-                    placeholder="เล่าว่าอาชีพนี้ทำประมาณไหน เหมาะกับใคร ต้องเตรียมอะไรบ้าง"
-                    className="mt-2 w-full resize-none rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 leading-7 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  />
-                </label>
+                  {isExpanded && (
+                    <div className="mt-5 grid gap-4 border-t border-[#171B18]/10 pt-5 lg:grid-cols-2">
+                      <label className="block">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          ชื่ออาชีพ / ชื่อคลิป
+                        </span>
+                        <input
+                          value={review.title}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              title: event.target.value,
+                            })
+                          }
+                          disabled={saving}
+                          placeholder="เช่น ปลูกผักไฮโดรโปนิกส์"
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        />
+                      </label>
 
-                <label className="block">
-                  <span className="text-sm font-semibold text-[#171B18]">
-                    สถานะ
-                  </span>
-                  <select
-                    value={review.status}
-                    onChange={(event) =>
-                      updateReview(review.id, {
-                        status: event.target
-                          .value as CareerReviewStatus,
-                      })
-                    }
-                    disabled={saving}
-                    className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
-                  >
-                    <option value="published">
-                      เผยแพร่
-                    </option>
-                    <option value="draft">
-                      แบบร่าง
-                    </option>
-                  </select>
-                </label>
-              </div>
-            </div>
-            ))}
+                      <label className="block">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          รายได้โดยประมาณ
+                        </span>
+                        <input
+                          value={review.incomeText}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              incomeText: event.target.value,
+                            })
+                          }
+                          disabled={saving}
+                          placeholder="เช่น 15,000 - 30,000 บาท/เดือน"
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          ประเภทอาชีพ
+                        </span>
+                        <select
+                          value={review.careerType}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              careerType: event.target
+                                .value as CareerReviewType,
+                            })
+                          }
+                          disabled={saving}
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        >
+                          <option value="primary">
+                            อาชีพหลัก
+                          </option>
+                          <option value="secondary">
+                            อาชีพเสริม
+                          </option>
+                        </select>
+                      </label>
+
+                      <label className="block">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          คอร์สที่เกี่ยวข้อง
+                        </span>
+                        <select
+                          value={review.courseId}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              courseId: event.target.value,
+                            })
+                          }
+                          disabled={saving}
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        >
+                          <option value="">
+                            เลือกคอร์ส
+                          </option>
+                          {courses.map((courseItem) => (
+                            <option
+                              key={courseItem.id}
+                              value={courseItem.id}
+                            >
+                              {courseItem.title}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+
+                      <label className="block lg:col-span-2">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          YouTube URL คลิปรีวิวอาชีพ
+                        </span>
+                        <input
+                          type="url"
+                          value={review.youtubeUrl}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              youtubeUrl: event.target.value,
+                            })
+                          }
+                          disabled={saving}
+                          placeholder="https://www.youtube.com/watch?v=..."
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        />
+                      </label>
+
+                      <label className="block lg:col-span-2">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          รายละเอียดอาชีพ
+                        </span>
+                        <textarea
+                          value={review.description}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              description: event.target.value,
+                            })
+                          }
+                          disabled={saving}
+                          rows={4}
+                          placeholder="เล่าว่าอาชีพนี้ทำประมาณไหน เหมาะกับใคร ต้องเตรียมอะไรบ้าง"
+                          className="mt-2 w-full resize-none rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 leading-7 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className="text-sm font-semibold text-[#171B18]">
+                          สถานะ
+                        </span>
+                        <select
+                          value={review.status}
+                          onChange={(event) =>
+                            updateReview(review.id, {
+                              status: event.target
+                                .value as CareerReviewStatus,
+                            })
+                          }
+                          disabled={saving}
+                          className="mt-2 w-full rounded-2xl border border-[#171B18]/15 bg-[#FFFDF7] px-4 py-3 outline-none focus:border-[#C63228] focus:ring-2 focus:ring-[#C63228]/10"
+                        >
+                          <option value="published">
+                            เผยแพร่
+                          </option>
+                          <option value="draft">
+                            แบบร่าง
+                          </option>
+                        </select>
+                      </label>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
 
