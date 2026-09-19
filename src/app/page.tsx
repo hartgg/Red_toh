@@ -149,7 +149,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-[#F5F1E8] text-[#171B18]">
       <header className="border-b border-white/10 bg-[#171B18] text-white">
-        <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 w-full items-center gap-4 px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex shrink-0 items-center gap-3"
@@ -238,7 +238,7 @@ export default async function Home() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="w-full">
         <PopularCareerCarousel
           slides={toSlides(
             featuredCareers ?? [],
@@ -246,7 +246,7 @@ export default async function Home() {
           )}
         />
 
-        <section className="py-10">
+        <section className="px-4 py-10 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-[#171B18] sm:text-3xl">
             เป้าหมายคุณคืออะไร
           </h2>
@@ -284,7 +284,7 @@ export default async function Home() {
 
         <section
           id="all-careers"
-          className="pb-12"
+          className="px-4 pb-12 sm:px-6 lg:px-8"
         >
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>

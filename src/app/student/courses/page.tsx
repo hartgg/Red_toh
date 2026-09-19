@@ -35,13 +35,21 @@ export default async function StudentCoursesPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-[#171B18]">
-          คอร์สของฉัน
-        </h1>
-        <p className="mt-2 text-[#282B28]/75">
-          รวมคอร์สที่คุณสมัครเรียนไว้ทั้งหมด
-        </p>
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-[#171B18]">
+            คอร์สของฉัน
+          </h1>
+          <p className="mt-2 text-[#282B28]/75">
+            รวมคอร์สที่คุณสมัครเรียนไว้ทั้งหมด
+          </p>
+        </div>
+        <Link
+          href="/"
+          className="inline-flex items-center justify-center rounded-xl border border-[#171B18]/15 bg-[#FFFDF7] px-5 py-3 font-semibold text-[#171B18] transition hover:bg-[#C63228]/10"
+        >
+          หน้าหลัก
+        </Link>
       </div>
 
       {(courses ?? []).length === 0 ? (

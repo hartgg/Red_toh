@@ -82,15 +82,26 @@ export default async function StudentDashboardPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <section className="rounded-3xl bg-[#C63228] p-6 text-white shadow-sm md:p-8">
-        <p className="text-sm font-semibold text-white/80">
-          สวัสดีคุณ {profile.full_name ?? "ผู้เรียน"}
-        </p>
-        <h1 className="mt-3 text-3xl font-bold md:text-4xl">
-          วันนี้มาเรียนรู้อาชีพเกษตรต่อกันครับ
-        </h1>
-        <p className="mt-3 max-w-2xl text-white/85">
-          หน้านี้รวมคอร์สที่สมัครไว้ ความคืบหน้า และทางลัดกลับไปเรียนบทเรียนล่าสุด
-        </p>
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-white/80">
+              สวัสดีคุณ {profile.full_name ?? "ผู้เรียน"}
+            </p>
+            <h1 className="mt-3 text-3xl font-bold md:text-4xl">
+              วันนี้มาเรียนรู้อาชีพเกษตรต่อกันครับ
+            </h1>
+            <p className="mt-3 max-w-2xl text-white/85">
+              หน้านี้รวมคอร์สที่สมัครไว้ ความคืบหน้า และทางลัดกลับไปเรียนบทเรียนล่าสุด
+            </p>
+          </div>
+
+          <Link
+            href="/"
+            className="inline-flex shrink-0 items-center justify-center rounded-xl border border-white/40 px-5 py-3 font-semibold text-white transition hover:bg-white/10"
+          >
+            หน้าหลัก
+          </Link>
+        </div>
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-3">
