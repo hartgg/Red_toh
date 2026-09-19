@@ -185,13 +185,6 @@ export default async function Home() {
             {user ? (
               <>
                 <Link
-                  href="/"
-                  className="hidden rounded-xl px-4 py-2 text-sm font-medium text-white/90 transition hover:bg-[#FFFDF7]/10 sm:inline-flex"
-                >
-                  หน้าแรก
-                </Link>
-
-                <Link
                   href={dashboardHref}
                   className="rounded-xl bg-[#C63228] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#A92B23]"
                 >
@@ -256,7 +249,7 @@ export default async function Home() {
               <Link
                 key={card.href}
                 href={card.href}
-                className="group overflow-hidden rounded-2xl border border-[#171B18]/10 bg-[#171B18] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
+                className="group overflow-hidden border border-[#171B18]/10 bg-[#171B18] transition hover:-translate-y-1"
               >
                 <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-[#E4DED3] text-xs font-bold text-[#282B28]/60 transition group-hover:bg-[#C63228]/10 sm:text-xl">
                   {goalImageMap.get(card.goal) ? (

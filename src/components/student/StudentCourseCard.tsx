@@ -13,7 +13,7 @@ export default function StudentCourseCard({
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group overflow-hidden rounded-2xl border border-[#171B18]/10 bg-[#FFFDF7] shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:rounded-3xl"
+      className="group overflow-hidden border border-[#171B18]/10 bg-[#FFFDF7] transition hover:-translate-y-1"
     >
       <div className="relative aspect-video overflow-hidden bg-[#171B18]/10 sm:h-44 sm:aspect-auto">
         {course.image_url ? (
