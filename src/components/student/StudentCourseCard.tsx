@@ -5,15 +5,19 @@ import type { Course } from "@/types/course";
 
 interface StudentCourseCardProps {
   course: Course;
+  rounded?: boolean;
 }
 
 export default function StudentCourseCard({
   course,
+  rounded = false,
 }: StudentCourseCardProps) {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group overflow-hidden border border-[#171B18]/10 bg-[#FFFDF7] transition hover:-translate-y-1"
+      className={`group overflow-hidden border border-[#171B18]/10 bg-[#FFFDF7] transition hover:-translate-y-1 ${
+        rounded ? "rounded-2xl sm:rounded-3xl" : ""
+      }`}
     >
       <div className="relative aspect-video overflow-hidden bg-[#171B18]/10 sm:h-44 sm:aspect-auto">
         {course.image_url ? (

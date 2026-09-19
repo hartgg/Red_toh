@@ -308,6 +308,7 @@ export default async function Home() {
                 <StudentCourseCard
                   key={course.id}
                   course={course}
+                  rounded
                 />
               ))}
             </div>
