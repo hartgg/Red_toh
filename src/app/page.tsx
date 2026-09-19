@@ -175,7 +175,7 @@ export default async function Home() {
               inputMode="search"
               aria-label="ค้นหาอาชีพหรือคอร์ส"
               placeholder="ค้นหาอาชีพหรือคอร์ส"
-              className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/60"
+              className="w-full appearance-none border-0 !bg-transparent px-0 py-0 text-sm text-white outline-none ring-0 placeholder:text-white/60 focus:outline-none focus:ring-0 autofill:shadow-[inset_0_0_0_1000px_#171B18] autofill:[-webkit-text-fill-color:#fff]"
             />
             <Search
               size={18}
