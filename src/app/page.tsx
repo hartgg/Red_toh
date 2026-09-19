@@ -171,7 +171,9 @@ export default async function Home() {
           >
             <input
               name="search"
-              type="search"
+              type="text"
+              inputMode="search"
+              aria-label="ค้นหาอาชีพหรือคอร์ส"
               placeholder="ค้นหาอาชีพหรือคอร์ส"
               className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/60"
             />
